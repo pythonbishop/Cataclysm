@@ -10,15 +10,17 @@ public class PlayerController : MonoBehaviour
     public Vector3 velocity;
     public float jetpackForce;
     public Vector3 acceleration;
+    public float drag;
+    public Vector3 dragVector;
     float[] centerScreen;
     void Start()
     {
-        centerScreen = new float[] {Screen.width/2, Screen.height/2};
     }
 
     // Update is called once per frame
     void Update()
     {
+        centerScreen = new float[] {Screen.width/2, Screen.height/2};
         verticalIn = Input.GetAxis("Vertical");
         horizontalIn = Input.GetAxis("Horizontal");
         
@@ -31,9 +33,10 @@ public class PlayerController : MonoBehaviour
             //player face right
         }
 
-        acceleration = (Vector3.right * horizontalIn + Vector3.up * verticalIn)*jetpackForce/10;
+        acceleration = (Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce * Time.deltaTime;
+        dragVector = -velocity * drag * Time.deltaTime;
 
-        velocity += acceleration * Time.deltaTime;
+        velocity += (acceleration + dragVector)* Time.deltaTime;
         transform.Translate(velocity);
     }
 }
