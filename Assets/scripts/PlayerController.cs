@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
         
         if (Input.mousePosition.x < centerScreen[0])
         {
-            //player face left 
+            //player face left here
         }
         else
         {
-            //player face right
+            //player face right here
         }
 
         acceleration = (Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce * Time.deltaTime;
