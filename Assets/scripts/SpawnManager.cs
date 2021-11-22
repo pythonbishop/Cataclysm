@@ -31,7 +31,6 @@ public class SpawnManager : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             mousePress = false;
-            currentDelay = 0.0f;
         }
 
         if (currentDelay <= 0 & mousePress)
@@ -39,10 +38,8 @@ public class SpawnManager : MonoBehaviour
             currentDelay = initialBuletDelay;
             spawnBullet();
         }
-        else if (mousePress)
-        {
-            currentDelay -= Time.deltaTime;
-        }
+        
+        currentDelay -= Time.deltaTime;
 
     }
     void spawnBullet()
@@ -51,6 +48,6 @@ public class SpawnManager : MonoBehaviour
         bulletSpawnPos = gunController.bulletSpawn;
         GameObject obj = Instantiate(bulletPrefab, bulletSpawnPos, transform.rotation);
         obj.GetComponent<BulletMove>().direction = angle;
-        obj.GetComponent<BulletMove>().speed += playerController.velocity.magnitude;
+        obj.GetComponent<BulletMove>().initialVelocity = playerController.velocity;
     }
 }

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jetpackForce;
     public Vector3 acceleration;
     public float drag;
-    public Vector3 dragVector;
+    public Vector3 dragForce;
     float[] centerScreen;
     void Start()
     {
@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
         }
 
         acceleration = (Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce * Time.deltaTime;
-        dragVector = -velocity * drag * Time.deltaTime;
+        dragForce = -velocity * drag * Time.deltaTime;
 
-        velocity += (acceleration + dragVector)* Time.deltaTime;
-        transform.Translate(velocity);
+        velocity += acceleration + dragForce;
+        transform.Translate(velocity * Time.deltaTime);
     }
 }
