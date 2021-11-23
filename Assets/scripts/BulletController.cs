@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector3 direction;
     public Vector3 initialVelocity;
     public float speed;
     public float rotateSpeed;
+    public float lifetime;
     Vector3 velocity;
     void Start()
     {
@@ -20,5 +21,8 @@ public class BulletMove : MonoBehaviour
     {
         transform.Translate(velocity * Time.deltaTime, Space.World);
         transform.Rotate(0, 0, rotateSpeed);
+        lifetime -= Time.deltaTime;
+
+        if (lifetime < 0) Destroy(gameObject);
     }
 }
