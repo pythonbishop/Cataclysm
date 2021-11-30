@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     PlayerController playerController;
     float currentDelay = 0.0f;
     Vector3 bulletSpawnPos;
+    Vector3 randomOffset;
     bool mousePress;
     float bulletSpeed;
     void Start()
@@ -43,9 +44,10 @@ public class SpawnManager : MonoBehaviour
     }
     void spawnBullet()
     {
-        Vector3 angle = Vector3.Normalize(new Vector3(Input.mousePosition[0] - Screen.width/2, Input.mousePosition[1] - Screen.height/2, 0));
         bulletSpawnPos = gunController.bulletSpawn;
+        Vector3 angle = Vector3.Normalize(new Vector3(Input.mousePosition[0] - Screen.width/2, Input.mousePosition[1] - Screen.height/2, 0));
         GameObject obj = Instantiate(bulletPrefab, bulletSpawnPos, new Quaternion());
+
         obj.GetComponent<BulletController>().direction = angle;
         obj.GetComponent<BulletController>().initialVelocity = playerController.velocity;
     }
