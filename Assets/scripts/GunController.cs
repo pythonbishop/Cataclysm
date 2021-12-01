@@ -21,8 +21,10 @@ public class GunController : MonoBehaviour
     void Update()
     {
         
+        //gun face right
         if ((int)angle < 90 & (int)angle > -90)
         {
+        //angle from gun to mouse
         angle = Mathf.Atan2(Input.mousePosition[1] - Screen.height/2 - offsetRight.y * trim, Input.mousePosition[0] - Screen.width/2 - offsetRight.x * trim) * Mathf.Rad2Deg;
 
         spriteRenderer.flipX = false;
@@ -32,8 +34,10 @@ public class GunController : MonoBehaviour
         bulletSpawn = transform.position + Vector3.Normalize(new Vector3(Input.mousePosition[0] - Screen.width/2 - offsetRight.x * trim, Input.mousePosition[1] - Screen.height/2 - offsetRight.y * trim)) * gunLength;
         }
 
+        //gun face left
         else if ((int)angle > 90 || (int)angle < -90)
         {
+        //angle from gun to mouse
         angle = Mathf.Atan2(Input.mousePosition[1] - Screen.height/2 - offsetLeft.y * trim, Input.mousePosition[0] - Screen.width/2 - offsetLeft.x * trim) * Mathf.Rad2Deg;
 
         spriteRenderer.flipX = true;

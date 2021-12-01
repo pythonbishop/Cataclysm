@@ -7,9 +7,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject weapon;
     public GameObject player;
-    public float bulletDelay = 0.5f;
+    public GameObject[] enemyInstances;
+    public GameObject[] gravityRobotInstances;
     GunController gunController;
     PlayerController playerController;
+    public float bulletDelay = 0.5f; //move bullet spawn logic to player and enemy objects
     float currentDelay = 0.0f;
     Vector3 bulletSpawnPos;
     Vector3 randomOffset;
