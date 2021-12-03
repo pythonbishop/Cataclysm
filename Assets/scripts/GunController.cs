@@ -27,24 +27,29 @@ public class GunController : MonoBehaviour
         mouseWorldPos = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse = new Vector3(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1]);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
-        
+
         bulletSpawn = transform.position + Vector3.Normalize(gunToMouse) * gunLength;
-        transform.SetPositionAndRotation(transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+
+        if (Input.anyKey) {
+            camera = Camera.main;
+        }
         
         if ((int)angle < 90 & (int)angle > -90)
         {
-        //gun face right
-        spriteRenderer.flipX = false;
-        spriteRenderer.sortingOrder = 2;
-        transform.localPosition = offsetRight;
+            //gun face right
+            spriteRenderer.flipX = false;
+            spriteRenderer.sortingOrder = 2;
+            transform.localPosition = offsetRight;
+            transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.right, gunToMouse));
         }
 
         else if ((int)angle > 90 || (int)angle < -90)
         {
-        //gun face left
-        spriteRenderer.flipX = true;
-        spriteRenderer.sortingOrder = 0;
-        transform.localPosition = offsetLeft;
+            //gun face left
+            spriteRenderer.flipX = true;
+            spriteRenderer.sortingOrder = 0;
+            transform.localPosition = offsetLeft;
+            transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.left, gunToMouse));
         }
     }
 }
