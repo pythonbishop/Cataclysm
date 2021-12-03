@@ -25,4 +25,9 @@ public class BulletController : MonoBehaviour
 
         if (lifetime < 0) Destroy(gameObject);
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Destroy(gameObject);
+    }
 }
