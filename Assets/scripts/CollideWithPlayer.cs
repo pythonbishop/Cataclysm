@@ -18,9 +18,10 @@ public class CollideWithPlayer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.)
+        if (col.gameObject.tag == "Player")
         {
-
+            Vector3 vel = gameObject.GetComponent<EnemyController>().velocity;
+            gameObject.GetComponent<EnemyController>().velocity = -vel;
         }
     }
 }
