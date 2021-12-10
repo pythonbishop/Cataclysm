@@ -5,32 +5,31 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [HideInInspector]
-    public float angle;
-    [HideInInspector]
-    public Vector3 bulletSpawn;
-    [HideInInspector]
-    public Vector3 gunToMouse;
 
-    public float gunLength;
-    public Vector3 offsetRight;
-    public Vector3 offsetLeft;
+    float angle;
+    float currentDelay = 0.0f;
+    bool mousePress;
+    Vector3 gunToMouse;
     Vector3 mouseWorldPos;
-    
-    public GameObject bulletPrefab;
+    Vector3 rotatedBulletSpawn;
     Camera camera;
     SpriteRenderer spriteRenderer;
     PlayerController playerController;
-
-    float currentDelay = 0.0f;
-    public float bulletDelay = 0.5f; //move bullet spawn logic to player and enemy objects
-    bool mousePress;
+    SpriteRenderer playerSpriteRenderer;
+    public Vector3 bulletSpawn;
+    public Vector3 offsetRight;
+    public Vector3 offsetLeft;
+    public bool twoHanded;
+    public GameObject bulletPrefab;
+    public bool flipPlayerSprite;
+    public float bulletDelay = 0.5f;
     void Start()
     {
         camera = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
         playerController = GetComponentInParent<PlayerController>();
+        playerSpriteRenderer = GetComponentInParent<SpriteRenderer>();
         gunToMouse = new Vector3();
     }
     // Update is called once per frame
@@ -40,7 +39,8 @@ public class GunController : MonoBehaviour
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
-        bulletSpawn = transform.position + Vector3.Normalize(gunToMouse) * gunLength;
+        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, angle, bulletSpawn.magnitude);
+        rotatedBulletSpawn = Vector3.ClampMagnitude(rotatedBulletSpawn, bulletSpawn.magnitude) + transform.position;
 
         if (gunToMouse.y < 0)
         {
@@ -51,18 +51,33 @@ public class GunController : MonoBehaviour
         {
             //gun face right
             spriteRenderer.flipX = false;
-            spriteRenderer.sortingOrder = 2;
             transform.localPosition = offsetRight;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.right, gunToMouse));
+
+            if (flipPlayerSprite == true) {
+                playerSpriteRenderer.flipX = false;
+                Debug.Log("false");
+            }
+            if (twoHanded == false) {
+                spriteRenderer.sortingOrder = 2;
+            }
         }
 
         else if ((int)gunToMouse.x < 0)
         {
             //gun face left
             spriteRenderer.flipX = true;
-            spriteRenderer.sortingOrder = 0;
             transform.localPosition = offsetLeft;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.left, gunToMouse));
+
+            if (flipPlayerSprite == true) {
+                Debug.Log("true");
+                playerSpriteRenderer.flipX = true;
+            }
+
+            if (twoHanded == false) {
+                spriteRenderer.sortingOrder = 0;
+            }
         }
 
         updateBulletDelay();
@@ -70,7 +85,7 @@ public class GunController : MonoBehaviour
     void spawnBullet()
     {
         float bulletAngle = angle + Random.Range(-2, 2);
-        GameObject obj = Instantiate(bulletPrefab, bulletSpawn, new Quaternion());
+        GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
 
         obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
         obj.GetComponent<BulletController>().initialVelocity = playerController.velocity;
