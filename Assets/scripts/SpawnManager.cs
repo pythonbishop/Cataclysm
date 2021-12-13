@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject gravityRobot;
     public List<GameObject> enemyInstances;
     public List<GameObject> gravityRobotInstances;
-    GunController gunController;
+    HandgunController gunController;
     PlayerController playerController;
     void Start()
     {

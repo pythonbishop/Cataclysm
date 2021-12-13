@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunController : MonoBehaviour
+public class ShotgunController : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -84,11 +84,21 @@ public class GunController : MonoBehaviour
     }
     void spawnBullet()
     {
-        float bulletAngle = angle + Random.Range(-2, 2);
-        GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+        float numShot = 5.0f;
+        float spread = 10.0f;
+        float bulletAngle = angle - spread/2;
+        Vector3 direction;
 
-        obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-        obj.GetComponent<BulletController>().initialVelocity = playerController.velocity;
+        for (int x = 0; x < numShot; x++)
+        {
+            bulletAngle += spread/numShot;
+            GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+            direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
+            Vector3 randVelocity = Vector3.Normalize(direction) * Random.Range(-5.0f, 5.0f);
+
+            obj.GetComponent<BulletController>().direction = direction;
+            obj.GetComponent<BulletController>().initialVelocity = playerController.velocity + randVelocity;
+        }
     }
 
     void updateBulletDelay()

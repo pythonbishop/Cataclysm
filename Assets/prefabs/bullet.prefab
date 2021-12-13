@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
-  speed: 30
+  speed: 40
   rotateSpeed: 4.94
   lifetime: 10
 --- !u!50 &410374318260336205

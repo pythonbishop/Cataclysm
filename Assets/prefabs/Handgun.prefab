@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2671391621758347063}
   - component: {fileID: 2671391621758347057}
-  - component: {fileID: 2671391621758347056}
+  - component: {fileID: 7478633023793062087}
   m_Layer: 6
-  m_Name: PlayerWeapon
+  m_Name: Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &2671391621758347056
+--- !u!114 &7478633023793062087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a683696c6fff374a9ed129feb53baa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 0
   bulletSpawn: {x: 0, y: 0, z: 0}
-  gunToMouse: {x: 0, y: 0, z: 0}
-  gunLength: 1.5
-  offsetRight: {x: -0.08, y: -0.43, z: 0}
-  offsetLeft: {x: -1.41, y: -0.96, z: 0}
-  bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
-  bulletDelay: 0.5
+  offsetRight: {x: 0, y: 0, z: 0}
+  offsetLeft: {x: 0, y: 0, z: 0}
+  twoHanded: 0
+  bulletPrefab: {fileID: 0}
+  flipPlayerSprite: 1
+  bulletDelay: 0.25
