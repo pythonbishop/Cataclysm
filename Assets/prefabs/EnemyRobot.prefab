@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1433758413
-  m_SortingLayer: -2
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e31b7953140136d46821db6c73d0068f, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -91,9 +91,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5523553664102240123}
+  - component: {fileID: 5523553664102240122}
   - component: {fileID: 5523553664102240116}
   - component: {fileID: 5523553664102240117}
-  - component: {fileID: 5523553664102240122}
   - component: {fileID: 5523553664102240121}
   - component: {fileID: 5523553664102240120}
   m_Layer: 0
@@ -118,6 +118,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5523553664102240122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523553664102240118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e73bbec5cbccb4193455163aefcc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
+  health: 10
+  bulletSpawn: {x: 2.05, y: 0, z: 0}
+  offsetRight: {x: -0.21, y: -0.43, z: 0}
+  offsetLeft: {x: -0.21, y: -0.43, z: 0}
+  bulletPrefab: {fileID: 7814017010384853607, guid: 49e035fdda2c98c4fb06bc2c1c5da8bf, type: 3}
+  bulletDelay: 0.5
+  flipSprite: 1
+  twoHanded: 1
+  shooting: 1
 --- !u!212 &5523553664102240116
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -156,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1433758413
-  m_SortingLayer: -2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 297761703447499198, guid: a9607b5d3d5d5ea47b135fd147d37814, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,18 +210,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5523553664102240122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5523553664102240118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e73bbec5cbccb4193455163aefcc69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &5523553664102240121
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,7 +234,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523553664102240118}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0

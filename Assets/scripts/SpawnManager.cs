@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         enemyInstances = new List<GameObject> {};
         gravityRobotInstances = new List<GameObject> {};
-        addEnemyRobot(new Vector3(10, 10, 0));
+        addEnemyRobot(new Vector3(15, 15, 0));
         addGravityRobot(new Vector3(10, 20, 0));
     }
 

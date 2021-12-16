@@ -29,7 +29,7 @@ public class HandgunController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
         playerController = GetComponentInParent<PlayerController>();
-        playerSpriteRenderer = GetComponentInParent<SpriteRenderer>();
+        playerSpriteRenderer = gameObject.transform.parent.GetComponent<SpriteRenderer>();
         gunToMouse = new Vector3();
     }
     // Update is called once per frame

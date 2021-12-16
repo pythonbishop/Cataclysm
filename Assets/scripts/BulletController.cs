@@ -28,6 +28,16 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Destroy(gameObject);
+        if (gameObject.tag == "bullet") {
+            if (col.gameObject.tag != "bullet" & col.gameObject.tag != "Player") {
+                Destroy(gameObject);
+            }
+        }
+
+        if (gameObject.tag == "enemybullet") {
+            if (col.gameObject.tag != "enemybullet") {
+                Destroy(gameObject);
+            }
+        }
     }
 }
