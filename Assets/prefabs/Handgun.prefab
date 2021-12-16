@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1433758413
-  m_SortingLayer: -2
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e31b7953140136d46821db6c73d0068f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,10 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a683696c6fff374a9ed129feb53baa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawn: {x: 0, y: 0, z: 0}
-  offsetRight: {x: 0, y: 0, z: 0}
-  offsetLeft: {x: 0, y: 0, z: 0}
+  bulletSpawn: {x: 2.05, y: 0, z: 0}
+  offsetRight: {x: -0.21, y: -0.43, z: 0}
+  offsetLeft: {x: -0.21, y: -0.43, z: 0}
   twoHanded: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
   flipPlayerSprite: 1
   bulletDelay: 0.25

@@ -84,7 +84,7 @@ public class RailgunController : MonoBehaviour
     }
     void spawnBullet()
     {
-        float bulletAngle = angle + Random.Range(-2, 2);
+        float bulletAngle = angle;
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
 
         obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
@@ -102,7 +102,7 @@ public class RailgunController : MonoBehaviour
             mousePress = false;
         }
 
-        if (currentDelay <= 0)
+        if (currentDelay <= 0 & mousePress)
         {
             currentDelay = bulletDelay;
             spawnBullet();
