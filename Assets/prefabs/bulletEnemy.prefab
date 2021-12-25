@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: m_TagString
       value: enemybullet
       objectReference: {fileID: 0}
+    - target: {fileID: 5026374665595413611, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
+      propertyPath: destroyAnimation
+      value: 
+      objectReference: {fileID: 5467854440882858249, guid: 7c973bda8ba887f478cf637d5db7384b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}

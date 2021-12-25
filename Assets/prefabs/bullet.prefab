@@ -114,10 +114,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
-  initialVelocity: {x: 0, y: 0, z: 0}
-  speed: 40
+  destroyAnimation: {fileID: 2901533639199188841, guid: dbca128addcecc041bb15a389c388286, type: 3}
+  speed: 3.02
   rotateSpeed: 0
-  lifetime: 10
+  lifetime: 5
 --- !u!50 &410374318260336205
 Rigidbody2D:
   serializedVersion: 4
@@ -130,12 +130,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.25
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4

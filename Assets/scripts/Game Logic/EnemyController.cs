@@ -6,23 +6,23 @@ public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector3 velocity;
-    public float health = 10.0f;
     public Vector3 bulletSpawn;
     public Vector3 offsetRight;
     public Vector3 offsetLeft;
-    Vector3 rotatedBulletSpawn;
     public GameObject bulletPrefab;
     public float bulletDelay;
+    public bool flipSprite;
+    public bool twoHanded;
+    public bool shooting;
+    
+    Vector3 rotatedBulletSpawn;
     SpriteRenderer gunSpriteRenderer;
     Transform gunTransform;
     GameObject player;
     SpriteRenderer spriteRenderer;
     Vector3 gunToPlayer;
     float angle;
-    public bool flipSprite;
-    public bool twoHanded;
     float currentDelay;
-    public bool shooting;
     void Start()
     {
         gunTransform = transform.GetChild(0);
@@ -82,11 +82,12 @@ public class EnemyController : MonoBehaviour
     }
     void spawnBullet()
     {
-        float bulletAngle = angle + Random.Range(-2, 2);
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+        float bulletAngle = angle + Random.Range(-2, 2);
+        float speed = obj.GetComponent<BulletController>().speed;
+        Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
 
-        obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-        obj.GetComponent<BulletController>().initialVelocity = velocity;
+        obj.GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
     }
 
     void updateBulletDelay()

@@ -12,7 +12,7 @@ public class ShotgunController : MonoBehaviour
     Vector3 gunToMouse;
     Vector3 mouseWorldPos;
     Vector3 rotatedBulletSpawn;
-    Camera camera;
+    Camera mainCamera;
     SpriteRenderer spriteRenderer;
     PlayerController playerController;
     SpriteRenderer playerSpriteRenderer;
@@ -20,12 +20,14 @@ public class ShotgunController : MonoBehaviour
     public Vector3 offsetRight;
     public Vector3 offsetLeft;
     public bool twoHanded;
+    public float speedVariation;
     public GameObject bulletPrefab;
     public bool flipPlayerSprite;
     public float bulletDelay = 0.5f;
+    public float spread = 10.0f;
     void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
         playerController = GetComponentInParent<PlayerController>();
@@ -35,7 +37,7 @@ public class ShotgunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseWorldPos = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
@@ -85,19 +87,18 @@ public class ShotgunController : MonoBehaviour
     void spawnBullet()
     {
         float numShot = 5.0f;
-        float spread = 10.0f;
         float bulletAngle = angle - spread/2;
-        Vector3 direction;
 
         for (int x = 0; x < numShot; x++)
         {
             bulletAngle += spread/numShot;
-            GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
-            direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-            Vector3 randVelocity = Vector3.Normalize(direction) * Random.Range(-5.0f, 5.0f);
 
-            obj.GetComponent<BulletController>().direction = direction;
-            obj.GetComponent<BulletController>().initialVelocity = playerController.velocity + randVelocity;
+            GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+            Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
+            Vector3 randforce = Vector3.Normalize(direction) * Random.Range(-speedVariation, speedVariation);
+            float speed = obj.GetComponent<BulletController>().speed;
+
+            obj.GetComponent<Rigidbody2D>().AddForce(randforce + direction * speed, ForceMode2D.Impulse);
         }
     }
 

@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     public float jetpackForce;
     public float drag;
     public Vector3 velocity;
-    Vector3 acceleration;
-    Vector3 dragForce;
     SpriteRenderer selfSprite;
+    Rigidbody2D selfRigidbody;
     void Start()
     {
         selfSprite = GetComponent<SpriteRenderer>();
+        selfRigidbody = GetComponent<Rigidbody2D>();
+
+        selfRigidbody.drag = drag;
     }
 
     // Update is called once per frame
@@ -23,11 +25,11 @@ public class PlayerController : MonoBehaviour
     {
         verticalIn = Input.GetAxis("Vertical");
         horizontalIn = Input.GetAxis("Horizontal");
+        velocity = selfRigidbody.velocity;
+    }
 
-        acceleration = (Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce * Time.deltaTime;
-        dragForce = -velocity * drag * Time.deltaTime;
-
-        velocity += acceleration + dragForce;
-        transform.Translate(velocity * Time.deltaTime);
+    void FixedUpdate()
+    {
+        selfRigidbody.AddForce((Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce);
     }
 }

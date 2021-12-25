@@ -6,26 +6,28 @@ public class HandgunController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public Vector3 bulletSpawn;
+    public Vector3 offsetRight;
+    public Vector3 offsetLeft;
+    public GameObject bulletPrefab;
+    public bool twoHanded;
+    public bool flipPlayerSprite;
+    public float bulletDelay = 0.5f;
+
+
     float angle;
     float currentDelay = 0.0f;
     bool mousePress;
     Vector3 gunToMouse;
     Vector3 mouseWorldPos;
     Vector3 rotatedBulletSpawn;
-    Camera camera;
+    Camera mainCamera;
     SpriteRenderer spriteRenderer;
     PlayerController playerController;
     SpriteRenderer playerSpriteRenderer;
-    public Vector3 bulletSpawn;
-    public Vector3 offsetRight;
-    public Vector3 offsetLeft;
-    public bool twoHanded;
-    public GameObject bulletPrefab;
-    public bool flipPlayerSprite;
-    public float bulletDelay = 0.5f;
     void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
         playerController = GetComponentInParent<PlayerController>();
@@ -35,7 +37,7 @@ public class HandgunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseWorldPos = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
@@ -84,11 +86,12 @@ public class HandgunController : MonoBehaviour
     }
     void spawnBullet()
     {
-        float bulletAngle = angle + Random.Range(-2, 2);
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+        float bulletAngle = angle + Random.Range(-2, 2);
+        float speed = obj.GetComponent<BulletController>().speed;
+        Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
 
-        obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-        obj.GetComponent<BulletController>().initialVelocity = playerController.velocity;
+        obj.GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
     }
 
     void updateBulletDelay()

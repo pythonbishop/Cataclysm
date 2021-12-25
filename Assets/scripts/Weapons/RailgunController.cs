@@ -12,7 +12,7 @@ public class RailgunController : MonoBehaviour
     Vector3 gunToMouse;
     Vector3 mouseWorldPos;
     Vector3 rotatedBulletSpawn;
-    Camera camera;
+    Camera mainCamera;
     SpriteRenderer spriteRenderer;
     PlayerController playerController;
     SpriteRenderer playerSpriteRenderer;
@@ -25,7 +25,7 @@ public class RailgunController : MonoBehaviour
     public float bulletDelay = 0.5f;
     void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
         playerController = GetComponentInParent<PlayerController>();
@@ -35,7 +35,7 @@ public class RailgunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseWorldPos = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
@@ -88,7 +88,6 @@ public class RailgunController : MonoBehaviour
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
 
         obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-        obj.GetComponent<BulletController>().initialVelocity = playerController.velocity;
     }
 
     void updateBulletDelay()
