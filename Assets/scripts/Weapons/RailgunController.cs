@@ -5,7 +5,6 @@ using UnityEngine;
 public class RailgunController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
     float angle;
     float currentDelay = 0.0f;
     bool mousePress;
@@ -38,7 +37,7 @@ public class RailgunController : MonoBehaviour
         mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
-
+        
         rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, angle, bulletSpawn.magnitude);
         rotatedBulletSpawn = Vector3.ClampMagnitude(rotatedBulletSpawn, bulletSpawn.magnitude) + transform.position;
 
@@ -85,7 +84,7 @@ public class RailgunController : MonoBehaviour
     void spawnBullet()
     {
         float bulletAngle = angle;
-        GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+        GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, Quaternion.FromToRotation(Vector3.right, gunToMouse));
 
         obj.GetComponent<BulletController>().direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
     }

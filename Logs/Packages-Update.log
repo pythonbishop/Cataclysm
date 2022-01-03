@@ -1,0 +1,9 @@
+
+=== Tue Dec 28 10:30:43 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 5.0.7 to 5.0.9
+  com.unity.collab-proxy from version 1.9.0 to 1.15.4

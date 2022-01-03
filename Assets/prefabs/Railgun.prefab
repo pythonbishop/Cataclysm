@@ -99,6 +99,6 @@ MonoBehaviour:
   offsetRight: {x: -0.83, y: -0.96, z: 0}
   offsetLeft: {x: -0.83, y: -0.96, z: 0}
   twoHanded: 0
-  bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
+  bulletPrefab: {fileID: 1382169011137202457, guid: 17e35dcb09417004580d74ef667575b8, type: 3}
   flipPlayerSprite: 1
   bulletDelay: 1
