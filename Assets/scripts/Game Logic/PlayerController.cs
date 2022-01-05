@@ -12,11 +12,12 @@ public class PlayerController : MonoBehaviour
     public Vector3 velocity;
     SpriteRenderer selfSprite;
     Rigidbody2D selfRigidbody;
+    Collider2D selfCollider;
     void Start()
     {
         selfSprite = GetComponent<SpriteRenderer>();
         selfRigidbody = GetComponent<Rigidbody2D>();
-
+        selfCollider = GetComponent<Collider2D>();
         selfRigidbody.drag = drag;
     }
 
@@ -26,6 +27,15 @@ public class PlayerController : MonoBehaviour
         verticalIn = Input.GetAxis("Vertical");
         horizontalIn = Input.GetAxis("Horizontal");
         velocity = selfRigidbody.velocity;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "lazerbeam")
+        {
+            Physics2D.IgnoreCollision(other.collider, selfCollider);
+            selfRigidbody.velocity = velocity;
+        }
     }
 
     void FixedUpdate()

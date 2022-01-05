@@ -41,14 +41,14 @@ public class ShotgunController : MonoBehaviour
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
-        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, angle, bulletSpawn.magnitude);
+        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, Mathf.Deg2Rad * angle, bulletSpawn.magnitude);
         rotatedBulletSpawn = Vector3.ClampMagnitude(rotatedBulletSpawn, bulletSpawn.magnitude) + transform.position;
 
         if (gunToMouse.y < 0)
         {
             angle = -angle;
-        } 
-        
+        }
+
         if ((int)gunToMouse.x > 0)
         {
             //gun face right
@@ -56,11 +56,13 @@ public class ShotgunController : MonoBehaviour
             transform.localPosition = offsetRight;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.right, gunToMouse));
 
-            if (flipPlayerSprite == true) {
+            if (flipPlayerSprite == true)
+            {
                 playerSpriteRenderer.flipX = false;
                 Debug.Log("false");
             }
-            if (twoHanded == false) {
+            if (twoHanded == false)
+            {
                 spriteRenderer.sortingOrder = 2;
             }
         }
@@ -72,12 +74,14 @@ public class ShotgunController : MonoBehaviour
             transform.localPosition = offsetLeft;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.left, gunToMouse));
 
-            if (flipPlayerSprite == true) {
+            if (flipPlayerSprite == true)
+            {
                 Debug.Log("true");
                 playerSpriteRenderer.flipX = true;
             }
 
-            if (twoHanded == false) {
+            if (twoHanded == false)
+            {
                 spriteRenderer.sortingOrder = 0;
             }
         }
@@ -87,18 +91,18 @@ public class ShotgunController : MonoBehaviour
     void spawnBullet()
     {
         float numShot = 5.0f;
-        float bulletAngle = angle - spread/2;
+        float bulletAngle = angle - spread / 2;
 
         for (int x = 0; x < numShot; x++)
         {
-            bulletAngle += spread/numShot;
+            bulletAngle += spread / numShot;
 
             GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
             Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
             Vector3 randforce = Vector3.Normalize(direction) * Random.Range(-speedVariation, speedVariation);
             float speed = obj.GetComponent<BulletController>().speed;
 
-            obj.GetComponent<Rigidbody2D>().AddForce(randforce + direction * speed, ForceMode2D.Impulse);
+            obj.GetComponent<Rigidbody2D>().velocity = speed * direction;
         }
     }
 
@@ -118,7 +122,7 @@ public class ShotgunController : MonoBehaviour
             currentDelay = bulletDelay;
             spawnBullet();
         }
-        
+
         currentDelay -= Time.deltaTime;
     }
 }

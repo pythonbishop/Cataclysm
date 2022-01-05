@@ -38,7 +38,7 @@ public class RailgunController : MonoBehaviour
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
         
-        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, angle, bulletSpawn.magnitude);
+        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, Mathf.Deg2Rad * angle, bulletSpawn.magnitude);
         rotatedBulletSpawn = Vector3.ClampMagnitude(rotatedBulletSpawn, bulletSpawn.magnitude) + transform.position;
 
         if (gunToMouse.y < 0)
@@ -55,7 +55,6 @@ public class RailgunController : MonoBehaviour
 
             if (flipPlayerSprite == true) {
                 playerSpriteRenderer.flipX = false;
-                Debug.Log("false");
             }
             if (twoHanded == false) {
                 spriteRenderer.sortingOrder = 2;
@@ -70,7 +69,6 @@ public class RailgunController : MonoBehaviour
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.left, gunToMouse));
 
             if (flipPlayerSprite == true) {
-                Debug.Log("true");
                 playerSpriteRenderer.flipX = true;
             }
 

@@ -102,5 +102,5 @@ MonoBehaviour:
   speedVariation: 0.5
   bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
   flipPlayerSprite: 1
-  bulletDelay: 1
+  bulletDelay: 0.75
   spread: 10

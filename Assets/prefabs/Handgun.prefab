@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a683696c6fff374a9ed129feb53baa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawn: {x: 2.05, y: 1.04, z: 0}
+  bulletSpawn: {x: 1, y: 1.5, z: 0}
   offsetRight: {x: -0.2, y: -0.94, z: 0}
   offsetLeft: {x: -1.44, y: -0.94, z: 0}
   bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}

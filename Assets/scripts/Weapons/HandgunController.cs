@@ -13,8 +13,6 @@ public class HandgunController : MonoBehaviour
     public bool twoHanded;
     public bool flipPlayerSprite;
     public float bulletDelay = 0.5f;
-
-
     float angle;
     float currentDelay = 0.0f;
     bool mousePress;
@@ -41,14 +39,14 @@ public class HandgunController : MonoBehaviour
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
 
-        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, angle, bulletSpawn.magnitude);
+        rotatedBulletSpawn = Vector3.RotateTowards(bulletSpawn, gunToMouse, Mathf.Deg2Rad * angle, bulletSpawn.magnitude);
         rotatedBulletSpawn = Vector3.ClampMagnitude(rotatedBulletSpawn, bulletSpawn.magnitude) + transform.position;
 
         if (gunToMouse.y < 0)
         {
             angle = -angle;
-        } 
-        
+        }
+
         if ((int)gunToMouse.x > 0)
         {
             //gun face right
@@ -56,11 +54,12 @@ public class HandgunController : MonoBehaviour
             transform.localPosition = offsetRight;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.right, gunToMouse));
 
-            if (flipPlayerSprite == true) {
+            if (flipPlayerSprite == true)
+            {
                 playerSpriteRenderer.flipX = false;
-                Debug.Log("false");
             }
-            if (twoHanded == false) {
+            if (twoHanded == false)
+            {
                 spriteRenderer.sortingOrder = 2;
             }
         }
@@ -72,12 +71,13 @@ public class HandgunController : MonoBehaviour
             transform.localPosition = offsetLeft;
             transform.SetPositionAndRotation(transform.position, Quaternion.FromToRotation(Vector3.left, gunToMouse));
 
-            if (flipPlayerSprite == true) {
-                Debug.Log("true");
+            if (flipPlayerSprite == true)
+            {
                 playerSpriteRenderer.flipX = true;
             }
 
-            if (twoHanded == false) {
+            if (twoHanded == false)
+            {
                 spriteRenderer.sortingOrder = 0;
             }
         }
@@ -91,7 +91,7 @@ public class HandgunController : MonoBehaviour
         float speed = obj.GetComponent<BulletController>().speed;
         Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
 
-        obj.GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
+        obj.GetComponent<Rigidbody2D>().velocity = speed * direction;
     }
 
     void updateBulletDelay()
@@ -110,7 +110,7 @@ public class HandgunController : MonoBehaviour
             currentDelay = bulletDelay;
             spawnBullet();
         }
-        
+
         currentDelay -= Time.deltaTime;
     }
 }
