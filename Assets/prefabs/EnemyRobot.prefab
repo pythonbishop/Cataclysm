@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5523553663057595898}
   - component: {fileID: 5523553663057595896}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: enemy weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 5523553664102240123}
   - component: {fileID: 5523553664102240122}
   - component: {fileID: 1938678942967406092}
+  - component: {fileID: 2676161214082297241}
   - component: {fileID: 5523553664102240116}
   - component: {fileID: 5523553664102240117}
   - component: {fileID: 5523553664102240121}
@@ -158,6 +159,20 @@ MonoBehaviour:
   soi: 40
   moveForce: 200
   engageDistance: 20
+--- !u!114 &2676161214082297241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523553664102240118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d95709e76cfc3346ba7e3a252d8e450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distSqr: 16
+  force: 1
 --- !u!212 &5523553664102240116
 SpriteRenderer:
   m_ObjectHideFlags: 0

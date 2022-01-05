@@ -108,9 +108,9 @@ public class EnemyController : MonoBehaviour
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
         float bulletAngle = angle + Random.Range(-2, 2);
         float speed = obj.GetComponent<BulletController>().speed;
-        Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
+        Vector2 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector2.right;
 
-        obj.GetComponent<Rigidbody2D>().velocity = speed * direction;
+        obj.GetComponent<Rigidbody2D>().velocity = speed * direction + gameObject.GetComponent<Rigidbody2D>().velocity;
     }
 
     void updateBulletDelay()

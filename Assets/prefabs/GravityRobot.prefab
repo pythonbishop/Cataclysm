@@ -101,7 +101,8 @@ MonoBehaviour:
   deathAnimation: {fileID: 0}
   health: 5
   effectRadius: 25
-  force: 0.5
+  force: 2
+  bulletEffect: 0.05
 --- !u!95 &612571790432622271
 Animator:
   serializedVersion: 3

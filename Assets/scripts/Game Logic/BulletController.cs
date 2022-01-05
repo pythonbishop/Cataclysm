@@ -30,6 +30,7 @@ public class BulletController : MonoBehaviour
         velocity = rbody.velocity;
 
         if (lifetime < 0)
+        // || velocity.sqrMagnitude < 4
         {
             Destroy(gameObject);
             spawnManagerScript.allDynamicSprites.Remove(gameObject);

@@ -11,6 +11,7 @@ public class GravityRobotController : MonoBehaviour
     public int health;
     public float effectRadius;
     public float force;
+    public float bulletEffect;
     float currentDamageDelay;
     float damageDelay;
     bool damaged;
@@ -36,7 +37,7 @@ public class GravityRobotController : MonoBehaviour
                 {
                     if (obj.tag == "bullet" || obj.tag == "enemybullet")
                     {
-                        objToSelf = Vector3.Normalize(objToSelf) * force / 50;
+                        objToSelf = Vector3.Normalize(objToSelf) * force * bulletEffect;
                     }
                     else
                     {

@@ -98,11 +98,11 @@ public class ShotgunController : MonoBehaviour
             bulletAngle += spread / numShot;
 
             GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
-            Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
-            Vector3 randforce = Vector3.Normalize(direction) * Random.Range(-speedVariation, speedVariation);
+            Vector2 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector2.right;
+            Vector2 randforce = Vector3.Normalize(direction) * Random.Range(-speedVariation, speedVariation);
             float speed = obj.GetComponent<BulletController>().speed;
 
-            obj.GetComponent<Rigidbody2D>().velocity = speed * direction;
+            obj.GetComponent<Rigidbody2D>().velocity = speed * direction + gameObject.transform.parent.GetComponent<Rigidbody2D>().velocity;
         }
     }
 

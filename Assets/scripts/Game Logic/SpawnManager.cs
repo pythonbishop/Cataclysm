@@ -20,17 +20,17 @@ public class SpawnManager : MonoBehaviour
         enemyInstances = new List<GameObject> { };
         gravityRobotInstances = new List<GameObject> { };
         allDynamicSprites.Add(player);
-        addEnemyRobot(new Vector3(15, 15, 0));
-        addEnemyRobot(new Vector3(15, 20, 0));
-        addEnemyRobot(new Vector3(20, 15, 0));
-        addEnemyRobot(new Vector3(20, 20, 0));
-        addGravityRobot(new Vector3(30, 30, 0));
+
+        //addGravityRobot(new Vector3(30, 30, 0));
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            testSpwan();
+        }
     }
     void addEnemyRobot(Vector3 pos)
     {
@@ -45,6 +45,17 @@ public class SpawnManager : MonoBehaviour
         gravityRobotInstances.Add(newRobot);
         allDynamicSprites.Add(newRobot);
 
+    }
+
+    void testSpwan()
+    {
+        for (int x = 0; x < 100; x += 10)
+        {
+            for (int y = 0; y < 100; y += 10)
+            {
+                addEnemyRobot(new Vector3(x+15, y-50, 0));
+            }
+        }
     }
 
 }
