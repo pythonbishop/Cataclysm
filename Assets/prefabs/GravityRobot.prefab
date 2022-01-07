@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 612571790432622265}
   - component: {fileID: 612571790432622264}
   - component: {fileID: 2993377777759452070}
+  - component: {fileID: -336517794242048403}
   - component: {fileID: 612571790432622271}
   - component: {fileID: 612571790432622267}
   - component: {fileID: 612571790432622244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GravityRobot
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -98,11 +99,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc0d5c14c38074983be7d6e35e7c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathAnimation: {fileID: 0}
-  health: 5
   effectRadius: 25
-  force: 2
-  bulletEffect: 0.05
+  force: 1.5
+  holdRadius: 5
+  bulletEffect: 0.01
+--- !u!114 &-336517794242048403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612571790432622270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ccf953ba14d4f4db7a4a54d51987ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!95 &612571790432622271
 Animator:
   serializedVersion: 3

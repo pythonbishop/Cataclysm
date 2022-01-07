@@ -18,11 +18,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player Bullets
+  - Enemy Bullets
+  - Level Objects
+  - Player
+  - Enemies
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
   - name: bg
     uniqueID: 3781885007
     locked: 1
+  - name: mg
+    uniqueID: 2027055721
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

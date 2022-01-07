@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5523553663057595898}
   - component: {fileID: 5523553663057595896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemy weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,13 +92,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5523553664102240123}
   - component: {fileID: 5523553664102240122}
+  - component: {fileID: 9149904396105212025}
   - component: {fileID: 1938678942967406092}
   - component: {fileID: 2676161214082297241}
   - component: {fileID: 5523553664102240116}
   - component: {fileID: 5523553664102240117}
   - component: {fileID: 5523553664102240121}
   - component: {fileID: 5523553664102240120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyRobot
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e73bbec5cbccb4193455163aefcc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
+  bulletSpeed: 30
   bulletSpawn: {x: 2.05, y: 0, z: 0}
   offsetRight: {x: -0.21, y: -0.43, z: 0}
   offsetLeft: {x: -0.21, y: -0.43, z: 0}
@@ -143,7 +144,19 @@ MonoBehaviour:
   shooting: 1
   deathAnimation: {fileID: 0}
   openFireDistance: 30
-  helath: 3
+--- !u!114 &9149904396105212025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523553664102240118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ccf953ba14d4f4db7a4a54d51987ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!114 &1938678942967406092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,9 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d677fb3967d22534789f5b7c9e6d322c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soi: 40
+  soi: 50
   moveForce: 200
-  engageDistance: 20
+  engageDistance: 30
 --- !u!114 &2676161214082297241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distSqr: 16
-  force: 1
+  force: 5
 --- !u!212 &5523553664102240116
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3146767451664525017}
   - component: {fileID: 202187917505144022}
   - component: {fileID: 1088492966251231937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: satalite
-  m_TagString: Untagged
+  m_TagString: level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2027055721
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a169ab1dca8ff914eaa7c4137f762723, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

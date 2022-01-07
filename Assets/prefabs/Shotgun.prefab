@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6887417251584655600}
   - component: {fileID: 6887417251584655606}
   - component: {fileID: 6887417251817157780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,12 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bd99e6d1f9f724f9cfaf49589b63b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawn: {x: 3.22, y: -0.016, z: 0}
+  bulletSpawn: {x: 2, y: 0.3, z: 0}
   offsetRight: {x: -0.77, y: -0.96, z: 0}
-  offsetLeft: {x: 0.64, y: -0.99, z: 0}
+  offsetLeft: {x: 0.77, y: -0.96, z: 0}
+  bulletSpeed: 40
   twoHanded: 1
-  speedVariation: 0.5
+  speedVariation: 3
   bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
   flipPlayerSprite: 1
   bulletDelay: 0.75
-  spread: 10
+  spreadShotgun: 12
+  bulletSpread: 0
+  numShot: 6
