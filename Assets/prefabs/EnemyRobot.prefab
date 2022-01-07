@@ -137,7 +137,7 @@ MonoBehaviour:
   bulletSpawn: {x: 2.05, y: 0, z: 0}
   offsetRight: {x: -0.21, y: -0.43, z: 0}
   offsetLeft: {x: -0.21, y: -0.43, z: 0}
-  bulletPrefab: {fileID: 7814017010384853607, guid: 49e035fdda2c98c4fb06bc2c1c5da8bf, type: 3}
+  bulletPrefab: {fileID: 1626811456188624040, guid: 31fe81cde4634c94e9f8c8cda3417e86, type: 3}
   bulletDelay: 2
   flipSprite: 1
   twoHanded: 1

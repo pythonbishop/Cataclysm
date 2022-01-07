@@ -11004,6 +11004,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 6887417251817157780, guid: 8c7acbd6a9cb3c34cb6cc9b508f26042, type: 3}
+      propertyPath: numShot
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887417251817157780, guid: 8c7acbd6a9cb3c34cb6cc9b508f26042, type: 3}
+      propertyPath: spreadShotgun
+      value: 360
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c7acbd6a9cb3c34cb6cc9b508f26042, type: 3}
 --- !u!1 &1597316367

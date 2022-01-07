@@ -89,7 +89,14 @@ public class GunController : MonoBehaviour
         }
 
         rotatedBulletSpawn = rotateAboutOrgin(bulletAdjustedSpawn, angle * Mathf.Deg2Rad) + transform.position;
-        updateBulletDelay();
+
+        if (currentDelay <= 0 & mousePress)
+        {
+            currentDelay = bulletDelay;
+            spawnBullet();
+        }
+
+        currentDelay -= Time.deltaTime;
     }
     void spawnBullet()
     {
@@ -104,28 +111,16 @@ public class GunController : MonoBehaviour
             Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
             Vector3 parentVel = new Vector3(parentRbody.velocity.x, parentRbody.velocity.y, 0);
             Vector3 vel = Vector3.Normalize(direction) * (Random.Range(-speedVariation, speedVariation) + bulletSpeed) + parentVel;
-            obj.GetComponent<BulletController>().setVelocity(vel);
-        }
-    }
 
-    void updateBulletDelay()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePress = true;
+            if (obj.TryGetComponent<BulletController>(out BulletController a))
+            {
+                obj.GetComponent<BulletController>().setVelocity(vel);
+            }
+            else if (obj.TryGetComponent<RocketController>(out RocketController z))
+            {
+                obj.GetComponent<RocketController>().setVelocity(vel);
+            }
         }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            mousePress = false;
-        }
-
-        if (currentDelay <= 0 & mousePress)
-        {
-            currentDelay = bulletDelay;
-            spawnBullet();
-        }
-
-        currentDelay -= Time.deltaTime;
     }
 
     Vector3 rotateAboutOrgin(Vector3 vec, float angle)
@@ -133,5 +128,15 @@ public class GunController : MonoBehaviour
         float x = vec.x*Mathf.Cos(angle) - vec.y*Mathf.Sin(angle);
         float y = vec.y*Mathf.Cos(angle) + vec.x*Mathf.Sin(angle);
         return new Vector3(x, y, 0);
+    }
+
+    public void mouseDown()
+    {
+        mousePress = true;
+    }
+
+    public void mouseUp()
+    {
+        mousePress = false;
     }
 }

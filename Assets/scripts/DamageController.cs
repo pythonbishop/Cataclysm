@@ -9,15 +9,14 @@ public class DamageController : MonoBehaviour
     float damageDelay;
     bool damaged;
     SpawnManager spawnManager;
-    SpriteRenderer spriteRenderer;
+    SpriteRenderer[] spriteRenderers;
     GameObject deathAnimation;
     public int health;
     void Start()
     {
         damageDelay = 0.1f;
         damaged = false;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
     }
 
@@ -26,7 +25,13 @@ public class DamageController : MonoBehaviour
     {
         if (damaged & currentDamageDelay <= 0)
         {
-            spriteRenderer.color = Color.white;
+            foreach (SpriteRenderer sp in spriteRenderers)
+            {
+                if (sp)
+                {
+                    sp.color = Color.white;
+                }
+            }
             damaged = false;
             if (health <= 0)
             {
@@ -35,7 +40,6 @@ public class DamageController : MonoBehaviour
                 Instantiate(deathAnimation, transform.position, transform.rotation);
             }
         }
-
         currentDamageDelay -= Time.deltaTime;
     }
 
@@ -50,7 +54,18 @@ public class DamageController : MonoBehaviour
             int bulletDamage = other.gameObject.GetComponent<BulletController>().damage;
             health -= bulletDamage;
             currentDamageDelay = damageDelay;
-            spriteRenderer.color = Color.red;
+            foreach (SpriteRenderer sp in spriteRenderers)
+            {
+                if (sp)
+                {
+                    sp.color = Color.red;
+                }
+            }
         }
+    }
+
+    public void updateSpriteRenderers()
+    {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     public float verticalIn;
     public float horizontalIn;
     public GameObject[] guns;
@@ -29,26 +29,26 @@ public class PlayerController : MonoBehaviour
         currentGun = transform.GetChild(0).gameObject;
         verticalIn = Input.GetAxis("Vertical");
         horizontalIn = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown("c"))
-        {
-            gunIndex += 1;
-            if (gunIndex > guns.Length - 1)
-            {
-                gunIndex = 0;
-            }
-            Destroy(currentGun);
-            Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-
+        
     }
 
     void FixedUpdate()
     {
         selfRigidbody.AddForce((Vector3.right * horizontalIn + Vector3.up * verticalIn) * jetpackForce);
+    }
+
+    public void cycleWeapons()
+    {
+        gunIndex += 1;
+        if (gunIndex > guns.Length - 1)
+        {
+            gunIndex = 0;
+        }
+        Destroy(currentGun);
+        Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
     }
 }

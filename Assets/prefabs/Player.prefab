@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5418790260504829522}
   - component: {fileID: 5418790260504829523}
+  - component: {fileID: -8547908371539377332}
   - component: {fileID: 6910391748059668810}
   - component: {fileID: 5418790260504829521}
   - component: {fileID: 5418790260504829520}
@@ -51,7 +52,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalIn: 0
   horizontalIn: 0
+  guns: []
   jetpackForce: 350
+--- !u!114 &-8547908371539377332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418790260504829527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7c29429f381134491a23d7ecba505f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6910391748059668810
 MonoBehaviour:
   m_ObjectHideFlags: 0

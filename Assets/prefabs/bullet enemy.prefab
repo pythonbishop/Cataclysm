@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7090724594330361588
+--- !u!1001 &1766606254129424443
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1015464277289895054, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.443
+      value: -3.145354
       objectReference: {fileID: 0}
     - target: {fileID: 1015464277289895054, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.421
+      value: -4.0762935
       objectReference: {fileID: 0}
     - target: {fileID: 1015464277289895054, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: m_Name
-      value: bulletEnemy
+      value: bullet enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: m_Layer
@@ -82,6 +82,6 @@ PrefabInstance:
     - target: {fileID: 5026374665595413611, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
       propertyPath: destroyAnimation
       value: 
-      objectReference: {fileID: 5467854440882858249, guid: 7c973bda8ba887f478cf637d5db7384b, type: 3}
+      objectReference: {fileID: 3378765031146742613, guid: 3d6f4cf13063bfe4e819da40695be083, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}

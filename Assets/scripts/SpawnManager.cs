@@ -19,8 +19,8 @@ public class SpawnManager : MonoBehaviour
         enemyInstances = new List<GameObject> { };
         gravityRobotInstances = new List<GameObject> { };
         allDynamicSprites.Add(player);
-
-        //addGravityRobot(new Vector3(30, 30, 0));
+        
+        testSpwan();
     }
 
     // Update is called once per frame
@@ -43,7 +43,6 @@ public class SpawnManager : MonoBehaviour
         GameObject newRobot = Instantiate(gravityRobot, pos, transform.rotation);
         gravityRobotInstances.Add(newRobot);
         allDynamicSprites.Add(newRobot);
-
     }
 
     void testSpwan()
@@ -56,5 +55,4 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
-
 }
