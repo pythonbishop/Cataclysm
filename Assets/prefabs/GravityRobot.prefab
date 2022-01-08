@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc0d5c14c38074983be7d6e35e7c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectRadius: 25
-  force: 1.5
+  effectRadius: 20
+  force: 0.5
   holdRadius: 5
   bulletEffect: 0.01
 --- !u!114 &-336517794242048403
@@ -115,7 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ccf953ba14d4f4db7a4a54d51987ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAnimation: {fileID: 3378765031146742613, guid: 3d6f4cf13063bfe4e819da40695be083, type: 3}
   health: 5
+  isAwake: 1
 --- !u!95 &612571790432622271
 Animator:
   serializedVersion: 3
@@ -171,4 +173,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

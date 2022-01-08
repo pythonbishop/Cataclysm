@@ -8,16 +8,14 @@ public class PersistentBulletController : MonoBehaviour
     public GameObject destroyAnimation;
     public float lifetime;
     public int damage;
-    GameObject SpawnManager;
     Vector3 direction;
-    SpawnManager spawnManagerScript;
+    SpawnManager spawnManager;
     Rigidbody2D rbody;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        SpawnManager = GameObject.FindWithTag("spawnmanager");
-        spawnManagerScript = SpawnManager.GetComponent<SpawnManager>();
-        spawnManagerScript.allDynamicSprites.Add(gameObject);
+        spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
+        spawnManager.allDynamicSprites.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -29,7 +27,6 @@ public class PersistentBulletController : MonoBehaviour
         // || velocity.sqrMagnitude < 4
         {
             Destroy(gameObject);
-            spawnManagerScript.allDynamicSprites.Remove(gameObject);
             Instantiate(destroyAnimation, transform.position, transform.rotation);
         }
     }
@@ -37,6 +34,10 @@ public class PersistentBulletController : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>();
         rbody.velocity = v;
+    }
+
+    private void OnDestroy() {
+        spawnManager.allDynamicSprites.Remove(gameObject);
     }
 
 }

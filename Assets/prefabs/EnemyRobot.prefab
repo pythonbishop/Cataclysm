@@ -142,7 +142,6 @@ MonoBehaviour:
   flipSprite: 1
   twoHanded: 1
   shooting: 1
-  deathAnimation: {fileID: 0}
   openFireDistance: 30
 --- !u!114 &9149904396105212025
 MonoBehaviour:
@@ -156,7 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ccf953ba14d4f4db7a4a54d51987ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAnimation: {fileID: 3378765031146742613, guid: 3d6f4cf13063bfe4e819da40695be083, type: 3}
   health: 3
+  isAwake: 1
 --- !u!114 &1938678942967406092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soi: 50
-  moveForce: 200
+  moveForce: 100
   engageDistance: 30
 --- !u!114 &2676161214082297241
 MonoBehaviour:

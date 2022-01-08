@@ -11,6 +11,8 @@ TagManager:
   - leveldynamic
   - spawnmanager
   - level
+  - rockglock
+  - healthtext
   layers:
   - Default
   - TransparentFX
@@ -53,4 +55,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 237281675
     locked: 0

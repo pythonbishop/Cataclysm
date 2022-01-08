@@ -12,28 +12,24 @@ public class PlayerInput : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         damageController = GetComponent<DamageController>();
-        gunController = GetComponentInChildren<GunController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        gunController = GetComponentInChildren<GunController>();
         if (Input.GetKeyDown("c"))
         {
             playerController.cycleWeapons();
-            gunController = GetComponentInChildren<GunController>();
             damageController.updateSpriteRenderers();
         }
-        if (gunController)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                gunController.mouseDown();
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                gunController.mouseUp();
-            }
+            gunController.mouseDown();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            gunController.mouseUp();
         }
     }
 }

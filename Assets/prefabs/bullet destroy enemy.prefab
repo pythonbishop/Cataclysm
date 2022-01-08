@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7290069674104135715}
   - component: {fileID: 3514914604988803251}
   - component: {fileID: 7430889619355608132}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bullet destroy enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -6484213738218965369, guid: c801b9c3eea783b438bb2193d765f74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

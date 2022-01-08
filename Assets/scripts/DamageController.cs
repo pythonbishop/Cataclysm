@@ -10,8 +10,9 @@ public class DamageController : MonoBehaviour
     bool damaged;
     SpawnManager spawnManager;
     SpriteRenderer[] spriteRenderers;
-    GameObject deathAnimation;
+    public GameObject deathAnimation;
     public int health;
+    public bool isAwake;
     void Start()
     {
         damageDelay = 0.1f;
@@ -23,7 +24,7 @@ public class DamageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (damaged & currentDamageDelay <= 0)
+        if (damaged & currentDamageDelay <= 0 && isAwake)
         {
             foreach (SpriteRenderer sp in spriteRenderers)
             {
@@ -35,7 +36,6 @@ public class DamageController : MonoBehaviour
             damaged = false;
             if (health <= 0)
             {
-                spawnManager.allDynamicSprites.Remove(gameObject);
                 Destroy(gameObject);
                 Instantiate(deathAnimation, transform.position, transform.rotation);
             }
@@ -45,27 +45,41 @@ public class DamageController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-
-        DamageController otherDamageController = other.gameObject.GetComponent<DamageController>();
-        damaged = true;
-
-        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "enemybullet")
+        if (isAwake)
         {
-            int bulletDamage = other.gameObject.GetComponent<BulletController>().damage;
-            health -= bulletDamage;
-            currentDamageDelay = damageDelay;
-            foreach (SpriteRenderer sp in spriteRenderers)
+            DamageController otherDamageController = other.gameObject.GetComponent<DamageController>();
+
+            if (other.gameObject.tag == "bullet" || other.gameObject.tag == "enemybullet")
             {
-                if (sp)
-                {
-                    sp.color = Color.red;
-                }
+                int bulletDamage = other.gameObject.GetComponent<BulletController>().damage;
+                hurt(bulletDamage);
             }
         }
     }
-
+    public void hurt(int damage)
+    {
+        damaged = true;
+        health -= damage;
+        currentDamageDelay = damageDelay;
+        foreach (SpriteRenderer sp in spriteRenderers)
+        {
+            if (sp)
+            {
+                sp.color = Color.red;
+            }
+        }
+    }
     public void updateSpriteRenderers()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+    }
+    public void wake()
+    {
+        isAwake = true;
+    }
+
+    public void sleep()
+    {
+        isAwake = false;
     }
 }

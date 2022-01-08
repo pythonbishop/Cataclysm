@@ -46,11 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2252eb8e30e45584fbf9280a040ecf57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectiles: {fileID: 2646984207830865424, guid: fae768ab5faaa6441b338b7efd0f9ecb, type: 3}
-  lifetime: 0.5
-  numProjectiles: 60
-  damage: 0
-  projectileSpeed: 40
+  rocketExplode: {fileID: 6329679617533343536, guid: e434fc8cba45e7b47bbade7500cd5ee3, type: 3}
+  lifetime: 5
 --- !u!212 &8063795468975249631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +89,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 6711257252158638106, guid: edef230059840d849957241648f5e589, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.07808231, g: 0.5283019, b: 0.31218123, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer selfSprite;
     Rigidbody2D selfRigidbody;
     Collider2D selfCollider;
+    SpawnManager spawnManager;
     int gunIndex;
     void Start()
     {
+        spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
         selfSprite = GetComponent<SpriteRenderer>();
         selfRigidbody = GetComponent<Rigidbody2D>();
         selfCollider = GetComponent<Collider2D>();
@@ -50,5 +52,8 @@ public class PlayerController : MonoBehaviour
         }
         Destroy(currentGun);
         Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
+    }
+    private void OnDestroy() {
+        spawnManager.allDynamicSprites.Remove(gameObject);
     }
 }

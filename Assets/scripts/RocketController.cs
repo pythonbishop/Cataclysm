@@ -5,48 +5,46 @@ using UnityEngine;
 public class RocketController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject projectiles;
+    public GameObject rocketExplode;
     public float lifetime;
-    public int numProjectiles;
-    public int damage;
-    public float projectileSpeed;
-    GameObject SpawnManager;
-    Vector3 direction;
-    SpawnManager spawnManagerScript;
+    SpawnManager spawnManager;
     Rigidbody2D rbody;
+    bool fuseLit = false;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        SpawnManager = GameObject.FindWithTag("spawnmanager");
-        spawnManagerScript = SpawnManager.GetComponent<SpawnManager>();
-        spawnManagerScript.allDynamicSprites.Add(gameObject);
+        spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
+        spawnManager.allDynamicSprites.Add(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
         lifetime -= Time.deltaTime;
+        int enemiesInRange = 0;
 
         if (lifetime < 0)
         // || velocity.sqrMagnitude < 4
         {
+            Destroy(gameObject);
+            GameObject obj = Instantiate(rocketExplode, transform.position, transform.rotation);
+        }
 
-            float deltaAngle = 360/numProjectiles;
-            float angle = 0;
-            Vector3 spawnPos = Vector3.right;
-
-            for (int a = 0; a < numProjectiles; a++)
+        else if (!fuseLit)
+        {
+            foreach (GameObject obj in spawnManager.allDynamicSprites)
             {
-                angle += deltaAngle;
+                Vector3 objToSelf = new Vector3(transform.position.x - obj.transform.position.x, transform.position.y - obj.transform.position.y, 0);
+                if (objToSelf.magnitude < 20 && obj.tag == "enemy")
+                {
+                    enemiesInRange += 1;
+                }
+            }
 
-                Destroy(gameObject);
-                spawnManagerScript.allDynamicSprites.Remove(gameObject);
-                
-                Vector3 direction = rotateAboutOrgin(spawnPos, angle);
-                GameObject obj = Instantiate(projectiles, direction + transform.position, transform.rotation);
-
-                Vector3 vel = direction * projectileSpeed;
-                obj.GetComponent<BulletController>().setVelocity(vel);
+            if (enemiesInRange >= 3)
+            {
+                lifetime = 0.3f;
+                fuseLit = true;
             }
         }
     }
@@ -60,6 +58,10 @@ public class RocketController : MonoBehaviour
         float x = vec.x*Mathf.Cos(angle) - vec.y*Mathf.Sin(angle);
         float y = vec.y*Mathf.Cos(angle) + vec.x*Mathf.Sin(angle);
         return new Vector3(x, y, 0);
+    }
+
+    private void OnDestroy() {
+        spawnManager.allDynamicSprites.Remove(gameObject);
     }
 }
 

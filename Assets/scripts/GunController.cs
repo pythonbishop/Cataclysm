@@ -37,6 +37,7 @@ public class GunController : MonoBehaviour
         playerSpriteRenderer = gameObject.transform.parent.GetComponent<SpriteRenderer>();
         gunToMouse = new Vector3();
         parentRbody = transform.parent.gameObject.GetComponent<Rigidbody2D>();
+        currentDelay = 0;
     }
     // Update is called once per frame
     void Update()

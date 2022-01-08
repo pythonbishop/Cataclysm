@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour
     public bool flipSprite;
     public bool twoHanded;
     public bool shooting;
-    public GameObject deathAnimation;
     public float openFireDistance;
     Vector3 rotatedBulletSpawn;
     SpriteRenderer gunSpriteRenderer;
@@ -30,11 +29,12 @@ public class EnemyController : MonoBehaviour
     {
         gunTransform = transform.GetChild(0);
         gunSpriteRenderer = gunTransform.gameObject.GetComponent<SpriteRenderer>();
-        gunToPlayer = new Vector3();
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
         rbody = GetComponent<Rigidbody2D>();
+        gunToPlayer = new Vector3();
+        spawnManager.allDynamicSprites.Add(gameObject);
     }
     // Update is called once per frame
     void Update()
@@ -120,6 +120,10 @@ public class EnemyController : MonoBehaviour
         float x = vec.x*Mathf.Cos(angle) - vec.y*Mathf.Sin(angle);
         float y = vec.y*Mathf.Cos(angle) + vec.x*Mathf.Sin(angle);
         return new Vector3(x, y, 0);
+    }
+
+    private void OnDestroy() {
+        spawnManager.allDynamicSprites.Remove(gameObject);
     }
 
 }

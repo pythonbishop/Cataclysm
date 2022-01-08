@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAnimation: {fileID: 0}
   lifetime: 1
-  damage: 5
+  damage: 20
 --- !u!61 &-3004028757474118607
 BoxCollider2D:
   m_ObjectHideFlags: 0

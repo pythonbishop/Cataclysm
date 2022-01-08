@@ -78,7 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ccf953ba14d4f4db7a4a54d51987ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAnimation: {fileID: 2901533639199188841, guid: dbca128addcecc041bb15a389c388286, type: 3}
   health: 10
+  isAwake: 1
 --- !u!212 &5418790260504829521
 SpriteRenderer:
   m_ObjectHideFlags: 0

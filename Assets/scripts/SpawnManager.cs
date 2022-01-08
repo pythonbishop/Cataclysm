@@ -7,20 +7,12 @@ public class SpawnManager : MonoBehaviour
     public GameObject player;
     public GameObject enemyRobot;
     public GameObject gravityRobot;
-    public List<GameObject> enemyInstances;
-    public List<GameObject> gravityRobotInstances;
     public List<GameObject> allDynamicSprites;
     PlayerController playerController;
-    GravityRobotController gRobotController;
     void Start()
     {
         playerController = player.GetComponent<PlayerController>();
-        gRobotController = gravityRobot.GetComponent<GravityRobotController>();
-        enemyInstances = new List<GameObject> { };
-        gravityRobotInstances = new List<GameObject> { };
         allDynamicSprites.Add(player);
-        
-        testSpwan();
     }
 
     // Update is called once per frame
@@ -34,15 +26,10 @@ public class SpawnManager : MonoBehaviour
     void addEnemyRobot(Vector3 pos)
     {
         GameObject newRobot = Instantiate(enemyRobot, pos, transform.rotation);
-        enemyInstances.Add(newRobot);
-        allDynamicSprites.Add(newRobot);
-
     }
     void addGravityRobot(Vector3 pos)
     {
         GameObject newRobot = Instantiate(gravityRobot, pos, transform.rotation);
-        gravityRobotInstances.Add(newRobot);
-        allDynamicSprites.Add(newRobot);
     }
 
     void testSpwan()
