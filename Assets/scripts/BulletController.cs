@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject destroyAnimation;
+    // controls most projectiles
+    public GameObject destroyAnimation; //gameobject to be spawned when gameObject is destroyed
     public float lifetime;
     public int damage;
     Vector3 direction;
@@ -15,17 +15,13 @@ public class BulletController : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
-        spawnManager.allDynamicSprites.Add(gameObject);
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         lifetime -= Time.deltaTime;
 
         if (lifetime < 0)
-        // || velocity.sqrMagnitude < 4
         {
             Destroy(gameObject);
             Instantiate(destroyAnimation, transform.position, transform.rotation);
@@ -43,9 +39,4 @@ public class BulletController : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
         rbody.velocity = v;
     }
-
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
-
 }

@@ -95,15 +95,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bd99e6d1f9f724f9cfaf49589b63b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
   bulletSpawn: {x: 2, y: 0.3, z: 0}
   offsetRight: {x: -0.2, y: -0.82, z: 0}
   offsetLeft: {x: -0.6, y: -0.82, z: 0}
-  bulletSpeed: 40
-  twoHanded: 0
   speedVariation: 0.02
-  bulletPrefab: {fileID: 1015464277289895059, guid: 059a0da9d23b6004da2b138ca7990a0f, type: 3}
-  flipPlayerSprite: 1
   bulletDelay: 0.25
   spreadShotgun: 0
   bulletSpread: 2
+  bulletSpeed: 40
+  ammo: 6
+  reloadDelay: 1
   numShot: 1
+  reloading: 0
+  twoHanded: 0
+  flipPlayerSprite: 1

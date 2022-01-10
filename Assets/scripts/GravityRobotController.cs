@@ -15,7 +15,6 @@ public class GravityRobotController : MonoBehaviour
     {
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spawnManager.allDynamicSprites.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -46,7 +45,4 @@ public class GravityRobotController : MonoBehaviour
         }
     }
 
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
 }

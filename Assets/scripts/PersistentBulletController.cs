@@ -15,7 +15,6 @@ public class PersistentBulletController : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
-        spawnManager.allDynamicSprites.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -36,8 +35,5 @@ public class PersistentBulletController : MonoBehaviour
         rbody.velocity = v;
     }
 
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
 
 }

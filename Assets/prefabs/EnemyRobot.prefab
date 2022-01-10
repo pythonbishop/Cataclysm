@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 1938678942967406092}
   - component: {fileID: 2676161214082297241}
   - component: {fileID: 5523553664102240116}
-  - component: {fileID: 5523553664102240117}
   - component: {fileID: 5523553664102240121}
   - component: {fileID: 5523553664102240120}
+  - component: {fileID: 4201491398898156257}
   m_Layer: 10
   m_Name: EnemyRobot
   m_TagString: enemy
@@ -238,25 +238,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5523553664102240117
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5523553664102240118}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8f7b70aeea4ce9142a794b0ad607aacf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!70 &5523553664102240121
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +267,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 1
+  m_LinearDrag: 0.1
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -294,3 +275,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4201491398898156257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523553664102240118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

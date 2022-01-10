@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    float currentDamageDelay;
-    float damageDelay;
-    bool damaged;
-    SpawnManager spawnManager;
-    SpriteRenderer[] spriteRenderers;
+    // manages health of gameobjects
     public GameObject deathAnimation;
     public int health;
     public bool isAwake;
+    float currentDamageDelay;
+    float damageDelay;
+    bool damaged;
+    SpriteRenderer[] spriteRenderers;
     void Start()
     {
         damageDelay = 0.1f;
         damaged = false;
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (damaged & currentDamageDelay <= 0 && isAwake)
         {
+            // changes sprite color back to white after short delay
             foreach (SpriteRenderer sp in spriteRenderers)
             {
                 if (sp)
@@ -33,12 +31,12 @@ public class DamageController : MonoBehaviour
                     sp.color = Color.white;
                 }
             }
-            damaged = false;
             if (health <= 0)
             {
                 Destroy(gameObject);
                 Instantiate(deathAnimation, transform.position, transform.rotation);
             }
+            damaged = false;
         }
         currentDamageDelay -= Time.deltaTime;
     }
@@ -58,14 +56,18 @@ public class DamageController : MonoBehaviour
     }
     public void hurt(int damage)
     {
-        damaged = true;
-        health -= damage;
-        currentDamageDelay = damageDelay;
-        foreach (SpriteRenderer sp in spriteRenderers)
+        // lowers health and changes sprite color to red
+        if (isAwake)
         {
-            if (sp)
+            damaged = true;
+            health -= damage;
+            currentDamageDelay = damageDelay;
+            foreach (SpriteRenderer sp in spriteRenderers)
             {
-                sp.color = Color.red;
+                if (sp)
+                {
+                    sp.color = Color.red;
+                }
             }
         }
     }

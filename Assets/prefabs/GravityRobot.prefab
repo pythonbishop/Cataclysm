@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 612571790432622265}
   - component: {fileID: 612571790432622264}
   - component: {fileID: 2993377777759452070}
+  - component: {fileID: 2543857834412404986}
   - component: {fileID: -336517794242048403}
-  - component: {fileID: 612571790432622271}
   - component: {fileID: 612571790432622267}
   - component: {fileID: 612571790432622244}
+  - component: {fileID: 1956268835638650891}
   m_Layer: 10
   m_Name: GravityRobot
   m_TagString: enemy
@@ -101,8 +102,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectRadius: 20
   force: 0.5
-  holdRadius: 5
-  bulletEffect: 0.01
+  holdRadius: 4
+  bulletEffect: 0
+--- !u!114 &2543857834412404986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612571790432622270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805bdd642a418b4489960818a2717b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceField: {fileID: 6239641979003094633, guid: 61fdc5dc7a5cbf24b9885f50589a5d9d, type: 3}
+  interval: 3
 --- !u!114 &-336517794242048403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,25 +133,6 @@ MonoBehaviour:
   deathAnimation: {fileID: 3378765031146742613, guid: 3d6f4cf13063bfe4e819da40695be083, type: 3}
   health: 5
   isAwake: 1
---- !u!95 &612571790432622271
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612571790432622270}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26ea71f5214cbef4fb5b256679dc0f6a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &612571790432622267
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -174,3 +170,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1956268835638650891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612571790432622270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

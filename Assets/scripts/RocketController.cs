@@ -7,45 +7,73 @@ public class RocketController : MonoBehaviour
     // Start is called before the first frame update
     public GameObject rocketExplode;
     public float lifetime;
+    public float fuse;
+    public int numEnemiesTrigger;
     SpawnManager spawnManager;
+    public LineRenderer line;
+    List<LineRenderer> activeLines;
+    List<GameObject> enemiesInRange;
     Rigidbody2D rbody;
-    bool fuseLit = false;
+    int numEnemiesInRange;
+    bool hasFuse;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
-        spawnManager.allDynamicSprites.Add(gameObject);
+        activeLines = new List<LineRenderer>();
+        enemiesInRange = new List<GameObject>();
+        numEnemiesInRange = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         lifetime -= Time.deltaTime;
-        int enemiesInRange = 0;
 
         if (lifetime < 0)
-        // || velocity.sqrMagnitude < 4
         {
             Destroy(gameObject);
             GameObject obj = Instantiate(rocketExplode, transform.position, transform.rotation);
         }
-
-        else if (!fuseLit)
+        
+        for (int i = 0; i < activeLines.Count; i++)
         {
-            foreach (GameObject obj in spawnManager.allDynamicSprites)
+            LineRenderer line = activeLines[i];
+            RocketLineEffect lineEffect = line.GetComponent<RocketLineEffect>();
+            if (!enemiesInRange.Contains(lineEffect.target) && !hasFuse)
             {
-                Vector3 objToSelf = new Vector3(transform.position.x - obj.transform.position.x, transform.position.y - obj.transform.position.y, 0);
-                if (objToSelf.magnitude < 20 && obj.tag == "enemy")
-                {
-                    enemiesInRange += 1;
-                }
+                activeLines.Remove(line);
+                Destroy(line);
             }
+        }
 
-            if (enemiesInRange >= 3)
+        foreach (GameObject obj in spawnManager.allDynamicSprites)
+        {
+            Vector3 objToSelf = new Vector3(transform.position.x - obj.transform.position.x, transform.position.y - obj.transform.position.y, 0);
+            if (objToSelf.magnitude < 20 && obj.tag == "enemy" && !enemiesInRange.Contains(obj))
             {
-                lifetime = 0.3f;
-                fuseLit = true;
+                LineRenderer newLine = Instantiate(line, transform.position, transform.rotation);
+                Vector3[] linePoints = {transform.position, obj.transform.position};
+                RocketLineEffect lineScript = newLine.GetComponent<RocketLineEffect>();
+                lineScript.target = obj;
+                lineScript.rocket = gameObject;
+
+                newLine.GetComponent<LineRenderer>().SetPositions(linePoints);
+                numEnemiesInRange += 1;
+                activeLines.Add(newLine);
+                enemiesInRange.Add(obj);
             }
+            else if (objToSelf.magnitude > 15 && enemiesInRange.Contains(obj))
+            {
+                enemiesInRange.Remove(obj);
+                numEnemiesInRange -= 1;
+            }
+        }
+
+        if (numEnemiesInRange >= numEnemiesTrigger && !hasFuse)
+        {
+            lifetime = fuse;
+            hasFuse = true;
         }
     }
     public void setVelocity(Vector3 v)
@@ -61,7 +89,11 @@ public class RocketController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
+        for (int i = 0; i < activeLines.Count; i++)
+        {
+            Destroy(activeLines[i]);
+        }
     }
+
 }
 

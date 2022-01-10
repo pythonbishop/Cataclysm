@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // controls behavior of Enemy Robot gameobjects
     public float bulletSpeed;
     public Vector3 bulletSpawn;
     public Vector3 offsetRight;
@@ -34,9 +34,8 @@ public class EnemyController : MonoBehaviour
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
         rbody = GetComponent<Rigidbody2D>();
         gunToPlayer = new Vector3();
-        spawnManager.allDynamicSprites.Add(gameObject);
     }
-    // Update is called once per frame
+
     void Update()
     {
         gunToPlayer.Set(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y, 0); //vector from self to player (gun direction)
@@ -96,6 +95,7 @@ public class EnemyController : MonoBehaviour
 
         updateBulletDelay();
     }
+
     void spawnBullet()
     {
         angle += Random.Range(-2, 2);
@@ -105,6 +105,7 @@ public class EnemyController : MonoBehaviour
         Vector3 vel = Vector3.Normalize(direction) * bulletSpeed + parentVel;
         obj.GetComponent<BulletController>().setVelocity(vel);
     }
+
     void updateBulletDelay()
     {
         if (currentDelay <= 0 & shooting)
@@ -115,15 +116,12 @@ public class EnemyController : MonoBehaviour
 
         currentDelay -= Time.deltaTime;
     }
+
     Vector3 rotateAboutOrgin(Vector3 vec, float angle)
     {
+        // rotate vector about (0, 0) in radians
         float x = vec.x*Mathf.Cos(angle) - vec.y*Mathf.Sin(angle);
         float y = vec.y*Mathf.Cos(angle) + vec.x*Mathf.Sin(angle);
         return new Vector3(x, y, 0);
     }
-
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
-
 }

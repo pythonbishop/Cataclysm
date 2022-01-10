@@ -4,15 +4,15 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject player;
     public GameObject enemyRobot;
     public GameObject gravityRobot;
     public List<GameObject> allDynamicSprites;
+    GameObject player;
     PlayerController playerController;
     void Start()
     {
         playerController = player.GetComponent<PlayerController>();
-        allDynamicSprites.Add(player);
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame

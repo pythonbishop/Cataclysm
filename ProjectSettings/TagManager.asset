@@ -13,6 +13,7 @@ TagManager:
   - level
   - rockglock
   - healthtext
+  - background
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Player
   - Enemies
   - No Collision
-  - 
+  - background
   - 
   - 
   - 
@@ -47,14 +48,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: bg
+  - name: static background
     uniqueID: 3781885007
-    locked: 1
-  - name: mg
-    uniqueID: 2027055721
+    locked: 0
+  - name: parallax layer
+    uniqueID: 3569616043
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: foreground
+    uniqueID: 2027055721
     locked: 0
   - name: UI
     uniqueID: 237281675

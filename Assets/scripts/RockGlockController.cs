@@ -99,7 +99,7 @@ public class RockGlockController : MonoBehaviour
     }
     void spawnBullet()
     {
-        angle += Random.Range(-2, 2);
+        angle += Random.Range(-6, 6);
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
         Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
         Vector3 parentVel = new Vector3(rbody.velocity.x, rbody.velocity.y, 0);

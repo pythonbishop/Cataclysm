@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class AvoidSelf : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float distSqr;
-    public float force;
+    // attached to enemy gameobjects to space them apart and prevent them from colliding with each other
+    public float distSqr; // maximum distance where force is applied
+    public float force; // repel force
     Rigidbody2D rbody;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(gameObject.tag);

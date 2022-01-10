@@ -120,9 +120,10 @@ GameObject:
   - component: {fileID: 8073741892467233246}
   - component: {fileID: 346727289602800076}
   - component: {fileID: 1496012725034577066}
+  - component: {fileID: 8098787292709694200}
   m_Layer: 10
   m_Name: RockGlock
-  m_TagString: rockglock
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAnimation: {fileID: 5447280528021669001, guid: 4c35e1713d395b941827f33a7d20d598, type: 3}
-  health: 10
+  health: 20
   isAwake: 0
 --- !u!212 &8073741892467233246
 SpriteRenderer:
@@ -305,6 +306,18 @@ PolygonCollider2D:
       - {x: -0.07, y: -1.2099999}
       - {x: 0.04, y: -1.09}
       - {x: 0.02, y: -1.02}
+--- !u!114 &8098787292709694200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073741892467233241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8826230772402286463
 GameObject:
   m_ObjectHideFlags: 0

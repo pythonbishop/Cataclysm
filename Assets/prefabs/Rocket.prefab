@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8063795468975249624}
   - component: {fileID: 8063795468975249625}
   - component: {fileID: 8063795468975249631}
-  - component: {fileID: 8063795468975249630}
   - component: {fileID: 7139420442064544473}
-  m_Layer: 11
+  - component: {fileID: 7810508348039680335}
+  m_Layer: 8
   m_Name: Rocket
-  m_TagString: bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketExplode: {fileID: 6329679617533343536, guid: e434fc8cba45e7b47bbade7500cd5ee3, type: 3}
   lifetime: 5
+  fuse: 0.4
+  numEnemiesTrigger: 1
+  line: {fileID: 7371895673646289658, guid: d12a2baac8272ad498ba2fe3099e8dce, type: 3}
 --- !u!212 &8063795468975249631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,25 +102,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8063795468975249630
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8063795468975249629}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd85b63b9e0e2904c937c12d79042e8e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &7139420442064544473
 Rigidbody2D:
   serializedVersion: 4
@@ -139,3 +123,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7810508348039680335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063795468975249629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

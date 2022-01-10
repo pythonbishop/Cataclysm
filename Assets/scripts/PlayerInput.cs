@@ -23,6 +23,11 @@ public class PlayerInput : MonoBehaviour
             playerController.cycleWeapons();
             damageController.updateSpriteRenderers();
         }
+
+        if (Input.GetKeyDown("r"))
+        {
+            playerController.reload();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             gunController.mouseDown();

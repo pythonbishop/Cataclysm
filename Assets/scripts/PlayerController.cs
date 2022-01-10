@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     //Start is called before the first frame update
     public float verticalIn;
     public float horizontalIn;
+    public bool[] isLoaded;
     public GameObject[] guns;
-    GameObject currentGun;
     public float jetpackForce;
+    public bool autoReload;
+    GameObject currentGun;
     SpriteRenderer selfSprite;
     Rigidbody2D selfRigidbody;
     Collider2D selfCollider;
@@ -23,19 +25,19 @@ public class PlayerController : MonoBehaviour
         selfCollider = GetComponent<Collider2D>();
         gunIndex = 0;
         currentGun = transform.GetChild(0).gameObject;
+        currentGun.GetComponent<GunController>().autoReload = autoReload;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentGun = transform.GetChild(0).gameObject;
         verticalIn = Input.GetAxis("Vertical");
         horizontalIn = Input.GetAxis("Horizontal");
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public void reload()
     {
-        
+        currentGun.GetComponent<GunController>().reloading = true;
     }
 
     void FixedUpdate()
@@ -51,9 +53,8 @@ public class PlayerController : MonoBehaviour
             gunIndex = 0;
         }
         Destroy(currentGun);
-        Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
+        currentGun = Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
+        currentGun.GetComponent<GunController>().autoReload = autoReload;
     }
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
+
 }

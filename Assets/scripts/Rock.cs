@@ -23,7 +23,6 @@ public class Rock : MonoBehaviour
         damageController = GetComponent<DamageController>();
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
         selfToPlayer = new Vector3();
-        spawnManager.allDynamicSprites.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -63,7 +62,4 @@ public class Rock : MonoBehaviour
         playerInBounds = false;
     }
 
-    private void OnDestroy() {
-        spawnManager.allDynamicSprites.Remove(gameObject);
-    }
 }
