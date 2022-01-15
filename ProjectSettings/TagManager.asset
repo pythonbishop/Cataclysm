@@ -14,6 +14,7 @@ TagManager:
   - rockglock
   - healthtext
   - background
+  - gravityrobot
   layers:
   - Default
   - TransparentFX

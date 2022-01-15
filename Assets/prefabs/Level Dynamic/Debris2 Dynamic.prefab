@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8371507357037162850}
   - component: {fileID: 6145023639099716212}
   - component: {fileID: 3482188365077520215}
+  - component: {fileID: 8828298608771103979}
   m_Layer: 8
   m_Name: Debris2 Dynamic
   m_TagString: leveldynamic
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 8
-  m_LinearDrag: 1
+  m_LinearDrag: 0.01
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -459,3 +460,15 @@ PolygonCollider2D:
       - {x: -0.51, y: 3.81}
       - {x: -0.51, y: 3.7099998}
       - {x: -0.61, y: 3.7099998}
+--- !u!114 &8828298608771103979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558775903741147592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

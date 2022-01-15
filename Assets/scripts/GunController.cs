@@ -11,8 +11,8 @@ public class GunController : MonoBehaviour
     public Vector3 offsetLeft; // for sprite
     public float speedVariation; // amount of random variation in bullet speed
     public float bulletDelay; // delay between firing shots
-    public float spreadShotgun; // shotgun spread
-    public float bulletSpread; // amount of random variation in bullet firing angle
+    public float shotgunSpread; // shotgun spread
+    public float individualBulletSpread; // amount of random variation in bullet firing angle
     public float bulletSpeed;
     public float ammo;
     public float reloadDelay;
@@ -22,37 +22,41 @@ public class GunController : MonoBehaviour
     public bool twoHanded; //determines if gun is drawn on top or behind of player sprite when facing left
     public bool flipPlayerSprite; // flip player sprite to face direction gun is aiming
     public bool autoReload;
+    public bool hasFireAnimation;
     float angle;
     float currentDelay = 0.0f;
     bool mousePress;
     Vector3 gunToMouse;
     Vector3 mouseWorldPos;
     Vector3 rotatedBulletSpawn;
-    Camera mainCamera;
     SpriteRenderer spriteRenderer;
-    PlayerController playerController;
     SpriteRenderer playerSpriteRenderer;
     Rigidbody2D parentRbody;
+    Animator animatorController;
     float currentReloadDelay;
     bool empty;
     void Start()
     {
-        mainCamera = Camera.main;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingLayerName = "character";
-        playerController = GetComponentInParent<PlayerController>();
         playerSpriteRenderer = gameObject.transform.parent.GetComponent<SpriteRenderer>();
         parentRbody = transform.parent.gameObject.GetComponent<Rigidbody2D>();
+
         gunToMouse = new Vector3();
         currentDelay = 0;
         currentReloadDelay = reloadDelay;
         currentAmmo = ammo;
+
+        if (hasFireAnimation)
+        {
+            animatorController = GetComponent<Animator>();
+        }
     }
     // Update is called once per frame
     void Update()
     {
         // calculate bullet spawn position and direction
-        mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
+        mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
         angle = Vector3.Angle(Vector3.right, gunToMouse);
         Vector3 bulletAdjustedSpawn = bulletSpawn;
@@ -110,8 +114,14 @@ public class GunController : MonoBehaviour
             spawnBullet();
         }
 
+        //set gun to empty and autoreload if possible
         if (currentAmmo <= 0)
         {
+            //update animator parameters
+            if (hasFireAnimation)
+            {
+                animatorController.SetBool("Fire", false);
+            }
             empty = true;
             if (autoReload)
             {
@@ -136,12 +146,18 @@ public class GunController : MonoBehaviour
     }
     void spawnBullet()
     {
-        float bulletAngle = angle - spreadShotgun / 2;
+        //update animator parameters
+        if (hasFireAnimation)
+        {
+            animatorController.SetBool("Fire", true);
+        }
+
+        float bulletAngle = angle - shotgunSpread / 2;
 
         for (int x = 0; x < numShot; x++)
         {
-            bulletAngle += spreadShotgun / numShot;
-            bulletAngle += Random.Range(-bulletSpread, bulletSpread);
+            bulletAngle += shotgunSpread / numShot;
+            bulletAngle += Random.Range(-individualBulletSpread, individualBulletSpread);
 
             GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, transform.rotation);
             Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
@@ -176,5 +192,10 @@ public class GunController : MonoBehaviour
     public void mouseUp()
     {
         mousePress = false;
+        //update animator parameters
+        if (hasFireAnimation)
+        {
+            animatorController.SetBool("Fire", false);
+        }
     }
 }

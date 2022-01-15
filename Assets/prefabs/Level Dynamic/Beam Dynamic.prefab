@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 526980708486320813}
   - component: {fileID: 526980708486320802}
   - component: {fileID: 526980708486320803}
+  - component: {fileID: -5523581683015209377}
   m_Layer: 8
   m_Name: Beam Dynamic
   m_TagString: leveldynamic
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 21.448376
-  m_LinearDrag: 1
+  m_LinearDrag: 0.01
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -137,3 +138,15 @@ PolygonCollider2D:
       - {x: 3.7027974, y: 4.503786}
       - {x: -4.8563995, y: -0.4209758}
       - {x: -4.856399, y: -1.3242074}
+--- !u!114 &-5523581683015209377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526980708486320800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

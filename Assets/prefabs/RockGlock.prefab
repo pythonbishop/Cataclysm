@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4927245963232127968}
   - component: {fileID: 2653809677575349114}
   - component: {fileID: 358414893963000891}
+  - component: {fileID: 6268332578031282678}
   m_Layer: 10
   m_Name: glock
   m_TagString: enemy
@@ -46,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 40
   bulletSpawn: {x: 3, y: 1, z: 0}
-  offsetRight: {x: -0.92, y: -1.04, z: 0}
-  offsetLeft: {x: 0.6, y: -0.93, z: 0}
-  bulletPrefab: {fileID: 1626811456188624040, guid: 31fe81cde4634c94e9f8c8cda3417e86, type: 3}
+  offsetRight: {x: 0.292, y: 0.071, z: 0}
+  offsetLeft: {x: 0.292, y: 0.071, z: 0}
+  bulletPrefab: {fileID: 3337222829550908075, guid: 658ecea36fdce6a4081f0726a84d2827, type: 3}
   bulletDelay: 0.2
   flipSprite: 1
   twoHanded: 1
@@ -106,6 +107,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6268332578031282678
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221457994206774004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b319030b51a998f4abb2a6bd78f9b85d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8073741892467233241
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +256,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
+  m_UseAutoMass: 1
+  m_Mass: 24.034601
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -329,6 +349,7 @@ GameObject:
   - component: {fileID: 2851847831295552776}
   - component: {fileID: 8463795397267205612}
   - component: {fileID: 4263202163389050058}
+  - component: {fileID: 7172117689176095910}
   m_Layer: 10
   m_Name: glock (1)
   m_TagString: enemy
@@ -364,9 +385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 40
   bulletSpawn: {x: 3, y: 1, z: 0}
-  offsetRight: {x: 0.6, y: -0.93, z: 0}
-  offsetLeft: {x: -0.92, y: -1.04, z: 0}
-  bulletPrefab: {fileID: 1626811456188624040, guid: 31fe81cde4634c94e9f8c8cda3417e86, type: 3}
+  offsetRight: {x: 0.292, y: 0.071, z: 0}
+  offsetLeft: {x: 0.292, y: 0.071, z: 0}
+  bulletPrefab: {fileID: 3337222829550908075, guid: 658ecea36fdce6a4081f0726a84d2827, type: 3}
   bulletDelay: 0.2
   flipSprite: 1
   twoHanded: 1
@@ -424,3 +445,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7172117689176095910
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826230772402286463}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b319030b51a998f4abb2a6bd78f9b85d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

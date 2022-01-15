@@ -137,8 +137,8 @@ MonoBehaviour:
   bulletSpawn: {x: 2.05, y: 0, z: 0}
   offsetRight: {x: -0.21, y: -0.43, z: 0}
   offsetLeft: {x: -0.21, y: -0.43, z: 0}
-  bulletPrefab: {fileID: 1626811456188624040, guid: 31fe81cde4634c94e9f8c8cda3417e86, type: 3}
-  bulletDelay: 2
+  bulletPrefab: {fileID: 3337222829550908075, guid: 658ecea36fdce6a4081f0726a84d2827, type: 3}
+  bulletDelay: 1.5
   flipSprite: 1
   twoHanded: 1
   shooting: 1
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d677fb3967d22534789f5b7c9e6d322c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soi: 50
-  moveForce: 100
+  soi: 40
+  moveForce: 50
   engageDistance: 30
 --- !u!114 &2676161214082297241
 MonoBehaviour:
@@ -265,9 +265,9 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 10
-  m_LinearDrag: 0.1
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

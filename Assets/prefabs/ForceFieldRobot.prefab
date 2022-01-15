@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeae53595b5edb48b60163134754269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectMaxRadius: 15
+  effectMinRadius: 5
+  force: 1
 --- !u!114 &9139851371303319414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAnimation: {fileID: 3378765031146742613, guid: 3d6f4cf13063bfe4e819da40695be083, type: 3}
-  health: 5
+  health: 3
   isAwake: 1
 --- !u!58 &7050350388603169662
 CircleCollider2D:
@@ -157,7 +160,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 30
   m_LinearDrag: 1
   m_AngularDrag: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8301485408505407606}
   - component: {fileID: 4310439956537620459}
   - component: {fileID: 6202943549970056423}
+  - component: {fileID: 6537889476812394008}
   m_Layer: 8
   m_Name: satalite dynamic
   m_TagString: leveldynamic
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 10
-  m_LinearDrag: 0
+  m_LinearDrag: 0.01
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -157,3 +158,15 @@ PolygonCollider2D:
       - {x: -4.026651, y: -1.7549267}
       - {x: -4.0219054, y: -2.7049985}
       - {x: -3.399044, y: -3.4702282}
+--- !u!114 &6537889476812394008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749448092626789036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,12 +15,17 @@ public class ParallaxController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 position = new Vector3();
 
         position = -player.transform.position * speed / 100 + player.transform.position + initialPosition;
 
         transform.position = position;
+    }
+
+    void Update()
+    {
+
     }
 }

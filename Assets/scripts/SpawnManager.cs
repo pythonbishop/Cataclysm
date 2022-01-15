@@ -11,8 +11,8 @@ public class SpawnManager : MonoBehaviour
     PlayerController playerController;
     void Start()
     {
-        playerController = player.GetComponent<PlayerController>();
         player = GameObject.FindWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 2671391621758347062, guid: ecc3683b8c2d53c4ea692f34cdb94202, type: 3}
   - {fileID: 6887417251584655601, guid: 8c7acbd6a9cb3c34cb6cc9b508f26042, type: 3}
   - {fileID: 4522607603283561228, guid: 4b36ee3eb925fbd4fa103fd4692a1ce1, type: 3}
-  jetpackForce: 350
+  jetpackForce: 100
   autoReload: 1
 --- !u!114 &-8547908371539377332
 MonoBehaviour:
@@ -165,9 +165,9 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 15
-  m_LinearDrag: 0.1
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

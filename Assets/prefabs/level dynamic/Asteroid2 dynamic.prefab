@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8349395570726644236}
   - component: {fileID: 3846814443142193609}
   - component: {fileID: 6564488525071208237}
+  - component: {fileID: -6355669448135396918}
   m_Layer: 8
   m_Name: Asteroid2 Dynamic
   m_TagString: leveldynamic
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 25
-  m_LinearDrag: 1
+  m_LinearDrag: 0.01
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -169,3 +170,15 @@ PolygonCollider2D:
       - {x: 0.19, y: -3.1}
       - {x: 0.37, y: -2.74}
       - {x: 0.66999996, y: -2.57}
+--- !u!114 &-6355669448135396918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431659230764845263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5ab6596f9bbc649a37828582e37a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

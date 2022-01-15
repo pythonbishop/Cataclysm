@@ -13,7 +13,7 @@ public class AvoidSelf : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag(gameObject.tag);
         foreach (GameObject obj in objects)

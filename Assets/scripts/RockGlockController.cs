@@ -23,10 +23,12 @@ public class RockGlockController : MonoBehaviour
     Rigidbody2D rbody;
     float angle;
     float currentDelay;
+    Animator animatorController;
     public bool isAwake;
     void Start()
     {
         gunSpriteRenderer = GetComponent<SpriteRenderer>();
+        animatorController = GetComponent<Animator>();
         spriteRenderer = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         rbody = transform.parent.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -91,6 +93,7 @@ public class RockGlockController : MonoBehaviour
             else
             {
                 shooting = false;
+                animatorController.SetBool("Shooting", false);
             }
 
             rotatedBulletSpawn = rotateAboutOrgin(bulletSpawn, angle * Mathf.Deg2Rad) + transform.position;
@@ -99,6 +102,7 @@ public class RockGlockController : MonoBehaviour
     }
     void spawnBullet()
     {
+        animatorController.SetBool("Shooting", true);
         angle += Random.Range(-6, 6);
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
         Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;

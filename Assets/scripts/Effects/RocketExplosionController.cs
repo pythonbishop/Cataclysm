@@ -29,7 +29,7 @@ public class RocketExplosionController : MonoBehaviour
                 {
                     objToSelf = Vector3.Normalize(objToSelf) * bulletEffect;
                 }
-                else
+                else if (obj.tag == "enemy")
                 {
                     objToSelf = Vector3.Normalize(objToSelf) * effect;
                     obj.GetComponent<DamageController>().hurt(damage);
