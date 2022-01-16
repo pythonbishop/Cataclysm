@@ -6,15 +6,16 @@ TagManager:
   tags:
   - bullet
   - enemybullet
-  - lazerbeam
   - enemy
   - leveldynamic
   - spawnmanager
   - level
-  - rockglock
   - healthtext
   - background
-  - gravityrobot
+  - pausemenu
+  - deathmenu
+  - rocket
+  - item
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Enemies
   - No Collision
   - background
-  - 
+  - Player Interaction
   - 
   - 
   - 

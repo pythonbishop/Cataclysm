@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAnimation: {fileID: 2901533639199188841, guid: dbca128addcecc041bb15a389c388286, type: 3}
   lifetime: 5
-  damage: 1
+  damage: 2
 --- !u!58 &2521853516681434263
 CircleCollider2D:
   m_ObjectHideFlags: 0
