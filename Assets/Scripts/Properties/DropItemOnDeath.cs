@@ -23,7 +23,7 @@ public class DropItemOnDeath : MonoBehaviour
     private void OnDestroy() {
         if (random)
         {
-            int randInt = Random.Range(0, allItems.Length*25);
+            int randInt = Random.Range(0, allItems.Length*20);
             
             if (randInt < allItems.Length)
             {

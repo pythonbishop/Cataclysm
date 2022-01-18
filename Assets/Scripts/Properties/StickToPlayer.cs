@@ -12,7 +12,7 @@ public class StickToPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
     }

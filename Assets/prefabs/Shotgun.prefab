@@ -109,7 +109,7 @@ MonoBehaviour:
   ammo: 4
   reloadDelay: 1
   currentAmmo: 0
-  numShot: 6
+  numShot: 4
   reloading: 0
   twoHanded: 1
   flipPlayerSprite: 1
@@ -118,6 +118,8 @@ MonoBehaviour:
   shootingSound: {fileID: 8300000, guid: b61be7beb4405964fa1e7cc22d03361e, type: 3}
   emptySound: {fileID: 8300000, guid: 636c832efabaf7347802d777baaad87a, type: 3}
   reloadSound: {fileID: 0}
+  currentReloadDelay: 0
+  empty: 0
 --- !u!95 &4589623281206135201
 Animator:
   serializedVersion: 3

@@ -18,7 +18,7 @@ public class HeartItem : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        other.gameObject.GetComponent<DamageController>().health += 1;
+        other.gameObject.GetComponent<DamageController>().health += 3;
         Destroy(gameObject);
         Instantiate(deathAnimation, transform.position, transform.rotation);
     }

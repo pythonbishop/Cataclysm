@@ -35,9 +35,9 @@ public class GunController : MonoBehaviour
     Animator animatorController;
     float angle;
     float currentDelay;
-    float currentReloadDelay;
+    public float currentReloadDelay;
     bool mousePress;
-    bool empty;
+    public bool empty;
     AudioSource audioSource;
     void Start()
     {
@@ -50,7 +50,7 @@ public class GunController : MonoBehaviour
         gunToMouse = new Vector3();
         currentDelay = 0;
         currentReloadDelay = reloadDelay;
-        reloading = true;
+        reloading = false;
 
         if (hasFireAnimation)
         {
@@ -60,6 +60,27 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //set gun to empty
+        if (currentAmmo <= 0)
+        {
+            empty = true;
+        }
+
+        // reloading logic
+        if (reloading)
+        {
+            currentReloadDelay -= Time.deltaTime;
+
+            if (currentReloadDelay < 0)
+            {
+                reloading = false;
+                empty = false;
+                currentReloadDelay = reloadDelay;
+                currentAmmo = ammo;
+                currentDelay = 0;
+            }
+        }
+
         // calculate bullet spawn position and direction
         mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition[0], Input.mousePosition[1]));
         gunToMouse.Set(mouseWorldPos.x - transform.position[0], mouseWorldPos.y - transform.position[1], 0);
@@ -121,35 +142,20 @@ public class GunController : MonoBehaviour
             }
             else
             {
-                audioSource.PlayOneShot(emptySound);
+
+                if (autoReload)
+                {
+                    reloading = true;
+                    audioSource.PlayOneShot(reloadSound);
+                }
+                else
+                {
+                    audioSource.PlayOneShot(emptySound);
+                }
             }
             currentDelay = bulletDelay;
         }
 
-        //set gun to empty and autoreload if possible
-        if (currentAmmo <= 0)
-        {
-            empty = true;
-            if (autoReload)
-            {
-                reloading = true;
-                audioSource.PlayOneShot(reloadSound);
-            }
-        }
-
-        // reloading logic
-        if (reloading)
-        {
-            if (currentReloadDelay < 0)
-            {
-                reloading = false;
-                empty = false;
-                currentReloadDelay = reloadDelay;
-                currentAmmo = ammo;
-                currentDelay = 0;
-            }
-            currentReloadDelay -= Time.deltaTime;
-        }
 
         currentDelay -= Time.deltaTime;
     }

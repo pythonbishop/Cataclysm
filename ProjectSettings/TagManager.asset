@@ -16,6 +16,7 @@ TagManager:
   - deathmenu
   - rocket
   - item
+  - boss
   layers:
   - Default
   - TransparentFX

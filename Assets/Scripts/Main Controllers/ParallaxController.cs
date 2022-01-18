@@ -5,12 +5,12 @@ using UnityEngine;
 public class ParallaxController : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject player;
+    GameObject mainCamera;
     Vector3 initialPosition;
     public float speed;
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        mainCamera = GameObject.FindWithTag("MainCamera");
         initialPosition = transform.position;
     }
 
@@ -19,13 +19,14 @@ public class ParallaxController : MonoBehaviour
     {
         Vector3 position = new Vector3();
 
-        position = -player.transform.position * speed / 100 + player.transform.position + initialPosition;
-
+        position = -mainCamera.transform.position * speed / 100 + mainCamera.transform.position + initialPosition;
         transform.position = position;
     }
-
-    void Update()
+    void LateUpdate()
     {
+        Vector3 position = new Vector3();
 
+        position = -mainCamera.transform.position * speed / 100 + mainCamera.transform.position + initialPosition;
+        transform.position = position;
     }
 }

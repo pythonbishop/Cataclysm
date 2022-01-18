@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e73bbec5cbccb4193455163aefcc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 25
   bulletSpawn: {x: 2.05, y: 0, z: 0}
   offsetRight: {x: -0.21, y: -0.43, z: 0}
   offsetLeft: {x: -0.21, y: -0.43, z: 0}

@@ -101,9 +101,9 @@ MonoBehaviour:
   offsetRight: {x: 0.65, y: -0.14, z: 0}
   offsetLeft: {x: -0.63, y: -0.23, z: 0}
   speedVariation: 0
-  bulletDelay: 0
+  bulletDelay: 0.5
   shotgunSpread: 0
-  individualBulletSpread: 0
+  individualBulletSpread: 5
   bulletSpeed: 40
   ammo: 1
   reloadDelay: 2

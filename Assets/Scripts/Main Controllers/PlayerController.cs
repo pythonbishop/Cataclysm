@@ -33,7 +33,11 @@ public class PlayerController : MonoBehaviour
 
     public void reload()
     {
-        currentGun.GetComponent<GunController>().reloading = true;
+        if (!currentGun.GetComponent<GunController>().empty)
+        {
+            currentGun.GetComponent<GunController>().reloading = true;
+            currentGun.GetComponent<AudioSource>().PlayOneShot(currentGun.GetComponent<GunController>().reloadSound);
+        }
     }
 
     public void cycleWeapons()
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour
         Destroy(currentGun);
         currentGun = Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
         currentGunController = currentGun.GetComponent<GunController>();
+        GetComponentInChildren<ReloadBarController>().updateGunReference();
 
         currentGunController.autoReload = autoReload;
         currentGunController.currentAmmo = ammo[gunIndex];

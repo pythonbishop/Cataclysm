@@ -50,7 +50,7 @@ public class PlayerInput : MonoBehaviour
             playerController.switchTo(2);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             gunController.mouseDown();
         }

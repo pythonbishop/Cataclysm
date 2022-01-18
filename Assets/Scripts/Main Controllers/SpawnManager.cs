@@ -27,16 +27,16 @@ public class SpawnManager : MonoBehaviour
     {
 
     }
-    void addEnemyRobot(Vector3 pos)
+    public void addEnemyRobot(Vector3 pos)
     {
         GameObject newRobot = Instantiate(enemyRobot, pos, transform.rotation);
     }
-    void addGravityRobot(Vector3 pos)
+    public void addGravityRobot(Vector3 pos)
     {
         GameObject newRobot = Instantiate(gravityRobot, pos, transform.rotation);
     }
 
-    void testSpwan()
+    public void testSpwan()
     {
         for (int x = 0; x < 100; x += 10)
         {
