@@ -64,6 +64,11 @@ public class GunController : MonoBehaviour
         if (currentAmmo <= 0)
         {
             empty = true;
+            if (autoReload)
+                {
+                    reloading = true;
+                    audioSource.PlayOneShot(reloadSound);
+                }
         }
 
         // reloading logic
@@ -142,16 +147,7 @@ public class GunController : MonoBehaviour
             }
             else
             {
-
-                if (autoReload)
-                {
-                    reloading = true;
-                    audioSource.PlayOneShot(reloadSound);
-                }
-                else
-                {
-                    audioSource.PlayOneShot(emptySound);
-                }
+                audioSource.PlayOneShot(emptySound);
             }
             currentDelay = bulletDelay;
         }

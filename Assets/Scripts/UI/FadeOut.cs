@@ -9,13 +9,17 @@ public class FadeOut : MonoBehaviour
     CanvasRenderer canvasRenderer;
     public float lifetime;
     public float timer;
+    float currentTimer;
     float totalTime;
     public bool active;
     float alpha;
+    float currentLifetime;
     void Start()
     {
         active = false;
         alpha = 0;
+        currentLifetime = lifetime;
+        currentTimer = timer;
 
         canvasRenderer = GetComponent<CanvasRenderer>();
         canvasRenderer.SetAlpha(alpha);
@@ -25,8 +29,8 @@ public class FadeOut : MonoBehaviour
     void Update()
     {
         if (active) {
-            timer -= Time.deltaTime;
-            if (timer < 0)
+            currentTimer -= Time.deltaTime;
+            if (currentTimer < 0)
             {
                 if (alpha > 1)
                 {
@@ -38,7 +42,7 @@ public class FadeOut : MonoBehaviour
 
                 canvasRenderer.SetAlpha(alpha);
 
-                lifetime -= Time.deltaTime;
+                currentLifetime -= Time.deltaTime;
                 totalTime += Time.deltaTime;
             }
         }

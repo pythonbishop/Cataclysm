@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         currentGun = transform.GetChild(0).gameObject;
         currentGunController = currentGun.GetComponent<GunController>();
         currentGunController.autoReload = autoReload;
+        GetComponentInChildren<ReloadBarController>().updateGunReference(currentGun.GetComponent<GunController>());
     }
 
     // Update is called once per frame
@@ -61,10 +62,10 @@ public class PlayerController : MonoBehaviour
         Destroy(currentGun);
         currentGun = Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
         currentGunController = currentGun.GetComponent<GunController>();
-        GetComponentInChildren<ReloadBarController>().updateGunReference();
 
         currentGunController.autoReload = autoReload;
         currentGunController.currentAmmo = ammo[gunIndex];
+        GetComponentInChildren<ReloadBarController>().updateGunReference(currentGun.GetComponent<GunController>());
     }
 
     public void switchTo(int index)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7072640914226108139}
   - component: {fileID: 8186686194024727167}
   - component: {fileID: 8107381520417583201}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Rocket Launcher Item
   m_TagString: item
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponToGive: 2
-  deathAnimation: {fileID: 0}
+  popUpText: Rocket Launcher Unlocked. Press C to switch weapons.
 --- !u!50 &8186686194024727167
 Rigidbody2D:
   serializedVersion: 4

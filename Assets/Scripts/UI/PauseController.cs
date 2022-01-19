@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PauseController : MonoBehaviour
 {
     public bool paused;
@@ -44,5 +44,10 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pauseMenu.SetActive(false);
+    }
+
+    void toMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

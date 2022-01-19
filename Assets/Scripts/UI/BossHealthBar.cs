@@ -17,12 +17,12 @@ public class BossHealthBar : MonoBehaviour
         bossDamageController = boss.GetComponent<DamageController>();
         rectTransform = GetComponent<RectTransform>();
         maxHealth = bossDamageController.health;
-        maxLength = rectTransform.sizeDelta.x;
+        maxLength = rectTransform.rect.xMax;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rectTransform.sizeDelta = new Vector2(maxLength * bossDamageController.health/maxHealth, rectTransform.sizeDelta.y);
+        rectTransform.sizeDelta = new Vector3(maxLength * (bossDamageController.health/maxHealth), rectTransform.sizeDelta.y, 0);
     }
 }

@@ -50,7 +50,7 @@ public class RocketController : MonoBehaviour
         foreach (GameObject obj in spawnManager.allDynamicSprites)
         {
             Vector3 objToSelf = new Vector3(transform.position.x - obj.transform.position.x, transform.position.y - obj.transform.position.y, 0);
-            if (objToSelf.magnitude < 20 && obj.tag == "enemy" && !enemiesInRange.Contains(obj))
+            if (objToSelf.magnitude < 25 && obj.tag == "enemy" && !enemiesInRange.Contains(obj))
             {
                 LineRenderer newLine = Instantiate(line, transform.position, transform.rotation);
                 Vector3[] linePoints = {transform.position, obj.transform.position};
@@ -63,7 +63,7 @@ public class RocketController : MonoBehaviour
                 activeLines.Add(newLine);
                 enemiesInRange.Add(obj);
             }
-            else if (objToSelf.magnitude > 15 && enemiesInRange.Contains(obj))
+            else if (objToSelf.magnitude > 25 && enemiesInRange.Contains(obj))
             {
                 enemiesInRange.Remove(obj);
                 numEnemiesInRange -= 1;

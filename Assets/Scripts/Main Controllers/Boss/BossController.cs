@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -79,7 +80,7 @@ public class BossController : MonoBehaviour
                 else if (phase == 2)
                 {
                     bullet360Attack();
-                }   
+                }
             }
 
             currentAttackCoolDown = attackCoolDown;
@@ -128,9 +129,9 @@ public class BossController : MonoBehaviour
     {
         float bulletAngle = Random.Range(-5f, 5f);
         int numShot = 60;
-        for (int i = 0; i < numShot; i ++)
+        for (int i = 0; i < numShot; i++)
         {
-            bulletAngle += 360/numShot;
+            bulletAngle += 360 / numShot;
 
             GameObject obj = Instantiate(bullet, transform.position, transform.rotation);
             Vector3 direction = Quaternion.AngleAxis(bulletAngle, Vector3.forward) * Vector3.right;
@@ -182,7 +183,11 @@ public class BossController : MonoBehaviour
             directionFromPlayer = Vector3.Normalize(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0));
             position = player.transform.position + (directionFromPlayer * Random.Range(20, 50));
         }
-        if (Random.value < 0.5) spawnManager.addEnemyRobot(position);
+        if (Random.value < 0.8) spawnManager.addEnemyRobot(position);
         else spawnManager.addGravityRobot(position);
+    }
+
+    private void OnDestroy() {
+        SceneManager.LoadScene("Credits");
     }
 }

@@ -17,6 +17,7 @@ TagManager:
   - rocket
   - item
   - boss
+  - event
   layers:
   - Default
   - TransparentFX

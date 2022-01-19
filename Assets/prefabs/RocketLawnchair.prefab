@@ -104,7 +104,7 @@ MonoBehaviour:
   bulletDelay: 0.5
   shotgunSpread: 0
   individualBulletSpread: 5
-  bulletSpeed: 40
+  bulletSpeed: 60
   ammo: 1
   reloadDelay: 2
   currentAmmo: 0
@@ -117,6 +117,8 @@ MonoBehaviour:
   shootingSound: {fileID: 0}
   emptySound: {fileID: 8300000, guid: 636c832efabaf7347802d777baaad87a, type: 3}
   reloadSound: {fileID: 0}
+  currentReloadDelay: 0
+  empty: 0
 --- !u!82 &1297157360902824294
 AudioSource:
   m_ObjectHideFlags: 0

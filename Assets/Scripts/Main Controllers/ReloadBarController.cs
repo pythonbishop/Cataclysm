@@ -5,13 +5,10 @@ using UnityEngine;
 public class ReloadBarController : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool startReloading;
-    float currentScale;
-    float reloadingTime;
     GunController gunController;
     void Start()
     {
-        updateGunReference();
+
     }
 
     // Update is called once per frame
@@ -21,14 +18,14 @@ public class ReloadBarController : MonoBehaviour
         {
             transform.localScale = new Vector3(5 - 5 * (gunController.reloadDelay - gunController.currentReloadDelay)/gunController.reloadDelay, 0.25f, 0);
         }
-        else if (!Vector3.Equals(transform.localScale, Vector3.zero))
+        else
         {
             transform.localScale = Vector3.zero;
         }
     }
 
-    public void updateGunReference()
+    public void updateGunReference(GunController gun)
     {
-        gunController = transform.parent.GetComponentInChildren<GunController>();
+        gunController = gun;
     }
 }
