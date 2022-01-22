@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathMenuController : MonoBehaviour
+public class WinMenuController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject winMenu;
     void Start()
     {
         
@@ -17,18 +18,8 @@ public class DeathMenuController : MonoBehaviour
         
     }
 
-    void quitGame()
+    void reveal()
     {
-        Application.Quit();
-    }
-
-    void restart()
-    {
-        SceneManager.LoadScene("Level 1");
-    }
-
-    void restartBoss()
-    {
-        SceneManager.LoadScene("Boss");
+        winMenu.SetActive(true);
     }
 }

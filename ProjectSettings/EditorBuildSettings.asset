@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 5022e44856b2deb4094c8a44e3470f6b
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boss.unity
     guid: 024e9510ccf6a334f93dfc3bd79b48f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Credits.unity
     guid: ffaa144f0f85a5a448bb16d403312a47
   m_configObjects: {}

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     SpawnManager spawnManager;
     GunController currentGunController;
     int gunIndex;
+    public GameObject gunType;
     void Start()
     {
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
         Destroy(currentGun);
         currentGun = Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
         currentGunController = currentGun.GetComponent<GunController>();
+        gunType.GetComponent<GunTypeUI>().switchType(gunIndex);
 
         currentGunController.autoReload = autoReload;
         currentGunController.currentAmmo = ammo[gunIndex];
@@ -78,9 +80,11 @@ public class PlayerController : MonoBehaviour
             Destroy(currentGun);
             currentGun = Instantiate(guns[gunIndex], transform.position, transform.rotation, transform);
             currentGunController = currentGun.GetComponent<GunController>();
+            gunType.GetComponent<GunTypeUI>().switchType(gunIndex);
 
             currentGunController.autoReload = autoReload;
             currentGunController.currentAmmo = ammo[gunIndex];
+            GetComponentInChildren<ReloadBarController>().updateGunReference(currentGun.GetComponent<GunController>());
         }
     }
 }

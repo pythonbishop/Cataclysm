@@ -12,13 +12,12 @@ public class RocketExplosionController : MonoBehaviour
     public int damage;
     SpawnManager spawnManager;
     Vector3 scale;
-    AudioClip explosionSound;
     // Start is called before the first frame update
     void Start()
     {
         scale = new Vector3(1, 1, 0);
         spawnManager = GameObject.FindWithTag("spawnmanager").GetComponent<SpawnManager>();
-        GetComponent<AudioSource>().PlayOneShot(explosionSound);
+        GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
 
         foreach (GameObject obj in spawnManager.allDynamicSprites)
         {
@@ -26,7 +25,6 @@ public class RocketExplosionController : MonoBehaviour
             Vector3 objToSelf = new Vector3(obj.transform.position.x - transform.position.x, obj.transform.position.y - transform.position.y, 0);
             if (objToSelf.magnitude < effectRadius)
             {
-
                 if (obj.tag == "bullet" || obj.tag == "enemybullet")
                 {
                     objToSelf = Vector3.Normalize(objToSelf) * bulletEffect;

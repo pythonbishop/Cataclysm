@@ -92,7 +92,6 @@ public class GunController : MonoBehaviour
         angle = Vector3.Angle(Vector3.right, gunToMouse);
         Vector3 bulletAdjustedSpawn = bulletSpawn;
 
-        // adjust angle for flipping sprite
         if (gunToMouse.y < 0)
         {
             angle = -angle;

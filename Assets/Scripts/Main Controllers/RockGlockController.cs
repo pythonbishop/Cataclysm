@@ -106,9 +106,11 @@ public class RockGlockController : MonoBehaviour
         animatorController.SetTrigger("Fire");
         angle += Random.Range(-6, 6);
         GameObject obj = Instantiate(bulletPrefab, rotatedBulletSpawn, new Quaternion());
+
         Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.right;
         Vector3 parentVel = new Vector3(rbody.velocity.x, rbody.velocity.y, 0);
         Vector3 vel = Vector3.Normalize(direction) * bulletSpeed + parentVel;
+        
         obj.GetComponent<BulletController>().setVelocity(vel);
     }
     void updateBulletDelay()

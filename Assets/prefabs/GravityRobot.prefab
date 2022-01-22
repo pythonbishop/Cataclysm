@@ -136,7 +136,7 @@ MonoBehaviour:
   health: 5
   isAwake: 1
   disable: 0
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 0313ff9d231c1244da113b1f5cf8cb6d, type: 3}
   damagedSound: {fileID: 8300000, guid: 219a09c5032770e4b98f9ade20f5f4ba, type: 3}
 --- !u!114 &1956268835638650891
 MonoBehaviour:

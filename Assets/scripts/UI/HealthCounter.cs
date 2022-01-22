@@ -7,16 +7,17 @@ public class HealthCounter : MonoBehaviour
 {
     GameObject player;
     DamageController playerDamageController;
-    Text healthText;
+    Image image;
+    public Sprite[] sprites;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerDamageController = player.GetComponent<DamageController>();
-        healthText = GetComponent<Text>();
+        image = GetComponent<Image>();
     }
 
     void Update()
     {
-        healthText.text = playerDamageController.health.ToString();
+        image.sprite = sprites[playerDamageController.health];
     }
 }

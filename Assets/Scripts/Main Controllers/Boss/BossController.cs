@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class BossController : MonoBehaviour
     public GameObject bullet;
     public GameObject knockback;
     public GameObject player;
+    public GameObject eventSystem;
     public int phase;
     Animator animator;
     Rigidbody2D rbody;
@@ -28,6 +28,7 @@ public class BossController : MonoBehaviour
     float shotgunDelay;
     float currentShotgunDelay;
     float numShotgunToFire = 3;
+    public bool dead;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -120,6 +121,11 @@ public class BossController : MonoBehaviour
         currentEnemySpawnCooldown -= Time.deltaTime;
         startDelay -= Time.deltaTime;
         currentKnockbackCooldown -= Time.deltaTime;
+
+        if (GetComponent<DamageController>().health <= 0)
+        {
+            dead = true;
+        }
     }
     void knockbackAttack()
     {
@@ -157,7 +163,7 @@ public class BossController : MonoBehaviour
         }
 
         float bulletAngle = angle - 50 / 2;
-        float numShot = 25;
+        float numShot = 20;
 
         for (float x = 0; x < numShot; x++)
         {
@@ -188,6 +194,6 @@ public class BossController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        SceneManager.LoadScene("Credits");
+        eventSystem.GetComponent<WinMenuController>().winMenu.SetActive(true);
     }
 }
